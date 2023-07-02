@@ -1,0 +1,20 @@
+.page {
+  background-color: black;
+  color: #fff;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.page__content {
+  padding: 0 20px 0 20px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 618px) {
+  .page {
+    max-width: 618px;
+  }
+}
