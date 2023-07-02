@@ -6,7 +6,8 @@
   list-style: none;
   max-width: 880px;
   max-height: 742px;
-  margin: 0;
+  width: 100%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, 282px);
   padding: 0;
@@ -28,10 +29,14 @@
 }
 
 .card__description {
-  margin: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+
+.card__description-text {
+  margin: 0;
+  width: 193px;
+  height: 29px;
+  align-self: flex-start;
   color: black;
   padding: 25px 28px 25px 20px;
   color: #000;
@@ -45,6 +50,7 @@
 .card__like-button {
   width: 21px;
   height: 18px;
+  align-self: center;
 }
 
 .card__like-button:hover {
