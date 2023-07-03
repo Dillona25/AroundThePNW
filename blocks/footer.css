@@ -17,3 +17,22 @@
   font-weight: 400;
   line-height: normal;
 }
+
+@media screen and (max-width: 618px) {
+  .footer {
+    display: flex;
+    align-items: flex-start;
+    width: 282px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    padding: 0 0 0 20px;
+    margin: 0;
+    width: 200px;
+  }
+
+  .footer__copyright {
+  }
+}

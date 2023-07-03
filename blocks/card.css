@@ -5,11 +5,11 @@
 .card__list {
   list-style: none;
   max-width: 880px;
-  max-height: 742px;
   width: 100%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 282px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 0;
   grid-column-gap: 17px;
   grid-row-gap: 20px;
@@ -30,6 +30,7 @@
 
 .card__description {
   display: flex;
+  white-space: nowrap;
 }
 
 .card__description-text {
@@ -58,12 +59,10 @@
   transition: opacity 0.5s ease;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 618px) {
   .cards {
   }
 
   .card__list {
-    display: flex;
-    flex-direction: column;
   }
 }

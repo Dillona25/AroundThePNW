@@ -18,3 +18,11 @@
     max-width: 618px;
   }
 }
+@media screen and (max-width: 320px) {
+  .page {
+  }
+
+  .page__content {
+    padding: 0;
+  }
+}
