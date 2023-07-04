@@ -18,10 +18,8 @@
     max-width: 618px;
   }
 }
-@media screen and (max-width: 320px) {
-  .page {
-  }
 
+@media screen and (max-width: 320px) {
   .page__content {
     padding: 0;
   }

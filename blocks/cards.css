@@ -1,5 +1,5 @@
-.cards {
-  margin-top: 60px;
+cards {
+  margin-top: 51px;
 }
 
 .cards__list {
@@ -31,6 +31,8 @@
 .cards__description {
   display: flex;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cards__description-text {
@@ -40,19 +42,40 @@
   padding: 25px 28px 25px 20px;
   color: #000;
   font-size: 24px;
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   font-style: normal;
+  line-height: 29px;
   font-weight: 900;
-  line-height: normal;
 }
 
 .cards__like-button {
   width: 21px;
   height: 18px;
   align-self: center;
+  background-image: url(../images/HeartLogo.svg);
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .cards__like-button:hover {
   opacity: 50%;
   transition: opacity 0.5s ease;
+}
+
+@media screen and (max-width: 618px) {
+  .cards {
+    max-width: 282px;
+    margin: 36px auto;
+  }
+
+  .cards__list {
+    max-width: 282px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .cards {
+    margin-top: 36px;
+  }
 }
