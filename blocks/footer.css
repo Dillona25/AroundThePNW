@@ -23,6 +23,12 @@
   .footer {
     width: 282px;
   }
+
+  .footer__copyright {
+    margin: 48px auto;
+    margin-bottom: 0;
+    padding-bottom: 36px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -35,7 +41,7 @@
   .footer__copyright {
     padding-bottom: 36px;
     width: 282px;
-    margin: 48px auto;
+    margin: 48px auto 0;
     font-size: 14px;
     line-height: normal;
     font-family: "Inter", sans-serif;
