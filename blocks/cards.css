@@ -30,9 +30,6 @@ cards {
 
 .cards__description {
   display: flex;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .cards__description-text {
@@ -46,6 +43,9 @@ cards {
   font-style: normal;
   line-height: 29px;
   font-weight: 900;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cards__like-button {

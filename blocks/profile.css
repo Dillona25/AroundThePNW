@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   align-items: flex-end;
-  width: 415px;
+  max-width: 415px;
 }
 
 .profile__content-name {
@@ -73,7 +73,7 @@
   transition: opacity 0.5s ease;
 }
 
-@media screen and (max-width: 618px) {
+@media screen and (max-width: 681px) {
   .profile {
     display: flex;
     flex-direction: column;
