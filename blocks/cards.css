@@ -53,6 +53,7 @@ cards {
   height: 18px;
   align-self: center;
   background-image: url(../images/HeartLogo.svg);
+  background-repeat: no-repeat;
   background-color: #fff;
   border: none;
   cursor: pointer;
