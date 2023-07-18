@@ -34,8 +34,8 @@
   width: 40px;
   height: 40px;
   position: absolute;
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
+  top: -45px;
+  right: -45px;
 }
 
 .modal__heading {
@@ -99,4 +99,50 @@
   font-weight: 400;
   line-height: normal;
   border: none;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 550px) {
+  .modal__container {
+    max-width: 282px;
+    max-height: 322px;
+    padding: 25px 22px 25px 22px;
+  }
+
+  .modal__form {
+    display: flex;
+    justify-content: center;
+    max-width: 238px;
+    margin: auto;
+  }
+
+  .modal__close {
+    top: -54;
+    right: 0;
+    width: 26px;
+    height: 26px;
+  }
+
+  .modal__heading {
+    font-size: 18px;
+    max-width: 238px;
+    max-height: 22px;
+    margin: ;
+  }
+
+  .modal__name {
+    max-width: 238px;
+    max-height: 14px;
+    font-size: 14px;
+  }
+
+  .modal__subtitle {
+    max-width: 238px;
+    max-height: 14px;
+  }
+
+  .modal__button {
+    max-width: 238px;
+    max-height: 46px;
+  }
 }
