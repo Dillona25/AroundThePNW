@@ -25,4 +25,18 @@ const initialCards = [
   },
 ];
 
-console.log(initialCards);
+//Elements Below
+
+const profileEditButton = document.querySelector("#profile-edit-button"); //Recommended giving it an ID as that will never chnage!
+const profileEditModal = document.querySelector("#profile-edit-modal");
+const ModalCloseButton = document.querySelector("#modal-close");
+
+profileEditButton.addEventListener("click", () => {
+  profileEditModal.classList.add("modal_opened"); // () => is the second argument and is a function.
+});
+
+//Examples of opening and closing a modal
+
+ModalCloseButton.addEventListener("click", () => {
+  profileEditModal.classList.remove("modal_opened");
+});
