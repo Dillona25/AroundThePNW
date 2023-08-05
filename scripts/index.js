@@ -60,6 +60,7 @@ function getCardElement(CardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector("#cards-image");
   const cardDescriptionEL = cardElement.querySelector("#cards-description");
+  const likeButton = document.querySelectorAll("#card-like-button");
 
   cardImageEl.src = CardData.link;
   cardImageEl.alt = CardData.name;
@@ -103,3 +104,10 @@ ProfileAddButton.addEventListener("click", () => {
 });
 
 ProfileAddClose.addEventListener("click", closeAddForm);
+
+const likeButton = document.querySelectorAll("#cards-like-button");
+likeButton.forEach((likeButton) => {
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("cards__like-button_active");
+  });
+});

@@ -102,7 +102,7 @@
   border-radius: 2px;
 }
 
-/*! adding a post modal */
+/** adding a post modal **/
 
 .modal__add {
   position: fixed;
