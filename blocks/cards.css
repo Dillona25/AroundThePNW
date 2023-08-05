@@ -64,6 +64,10 @@
   transition: opacity 0.5s ease;
 }
 
+.cards__like-button_active {
+  background-image: url(/images/Filled\ like\ heart.svg);
+}
+
 @media screen and (max-width: 618px) {
   .cards {
     max-width: 282px;
