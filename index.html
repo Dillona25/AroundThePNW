@@ -54,6 +54,8 @@
         <p class="footer__copyright">&copy; 2023 Around The U.S</p>
       </footer>
     </div>
+
+    <!-- Modal Edit form -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="modal-close"></button>
@@ -78,31 +80,33 @@
       </div>
     </div>
 
-    <div class="modal__add" id="profile-add-modal">
-      <div class="modal__add-container">
-        <button class="modal__add-close" id="modal-add-close"></button>
-        <p class="modal__add-heading">New place</p>
-        <form class="modal__add-form">
+    <!-- Modal Add form -->
+    <div class="modal" id="profile-add-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal-add-close"></button>
+        <p class="modal__heading">New place</p>
+        <form class="modal__form">
           <input
             type="text"
             name="title"
-            class="modal__name modal__title"
+            class="modal__name modal__input_type_name"
             placeholder="Title"
-            id="modal__add-title"
+            id="modal-title"
           />
           <input
             type="text"
             name="subtitle"
-            class="modal__subtitle"
+            class="modal__subtitle modal__input_type_subtitle"
             placeholder="Image link"
-            id="modal__add-subtitle"
+            id="modal-link"
           />
-          <button class="modal__add-button">Create</button>
+          <button class="modal__button">Create</button>
         </form>
       </div>
     </div>
+
     <template id="card-template">
-      <li class="cards__content">
+      <li class="cards__content" id="card-list">
         <img class="cards__image" id="cards-image" src="" alt="" />
         <div class="cards__description">
           <h2 class="cards__description-text" id="cards-description"></h2>
