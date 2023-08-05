@@ -40,7 +40,11 @@
               Explorer
             </p>
           </div>
-          <button type="button" class="profile__add-button"></button>
+          <button
+            type="button"
+            class="profile__add-button"
+            id="profile-add-button"
+          ></button>
         </section>
         <section class="cards">
           <ul class="cards__list" id="card-list"></ul>
@@ -73,9 +77,10 @@
         </form>
       </div>
     </div>
-    <div class="modal__add modal__add-opened" id="profile-add-modal">
+
+    <div class="modal__add" id="profile-add-modal">
       <div class="modal__add-container">
-        <button class="modal__add-close" id="modal-close"></button>
+        <button class="modal__add-close" id="modal-add-close"></button>
         <p class="modal__add-heading">New place</p>
         <form class="modal__add-form">
           <input

@@ -81,3 +81,25 @@ initialCards.forEach((CardData) => {
   const cardElement = getCardElement(CardData);
   cardList.prepend(cardElement);
 });
+
+//! Elements for Adding posts
+
+const ProfileAddButton = document.querySelector("#profile-add-button");
+const ProfileAddModal = document.querySelector("#profile-add-modal");
+const ProfileAddClose = document.querySelector("#modal-add-close");
+
+//!Functions for adding posts
+
+function closePopup() {
+  ProfileAddModal.classList.remove("modal__add-opened");
+}
+
+//! Event Listerners for adding posts
+
+ProfileAddButton.addEventListener("click", () => {
+  ProfileAddModal.classList.add("modal__add-opened");
+});
+
+ProfileAddClose.addEventListener("click", closePopup);
+
+//!Event handlers for adding posts
