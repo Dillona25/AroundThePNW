@@ -19,6 +19,7 @@
   margin: 0;
   background-color: white;
   border-radius: 10px;
+  position: relative;
 }
 
 .cards__image {
@@ -26,6 +27,24 @@
   height: 282px;
   border-radius: 10px 10px 0 0;
   margin: 0;
+}
+
+.cards__delete {
+  background-image: url(/images/Trash.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  right: 15px;
+  top: 18px;
+}
+
+.cards__delete:hover {
+  opacity: 60%;
+  transition: opacity 0.5s ease;
 }
 
 .cards__description {

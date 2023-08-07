@@ -1,3 +1,5 @@
+//* Arrays
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -25,15 +27,19 @@ const initialCards = [
   },
 ];
 
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-const cardList = document.querySelector("#card-list");
+//* Templates
+
+const cardTemplate = document
+  .querySelector("#card-template")
+  .content.querySelector(".cards__content");
 
 //* Wrappers
 
+const cardList = document.querySelector(".cards__list");
 const profileEditForm = document.querySelector("#profile-edit-modal");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const ProfileAddModal = document.querySelector("#profile-add-modal");
+const ProfileAddForm = document.querySelector("#modal-form-add");
 
 //* Buttons and other DOM nodes
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -59,8 +65,18 @@ function closePopup() {
 
 function getCardElement(CardData) {
   const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector("#cards-image");
-  const cardDescriptionEL = cardElement.querySelector("#cards-description");
+  const cardImageEl = cardElement.querySelector(".cards__image");
+  const cardDescriptionEL = cardElement.querySelector(".cards__description");
+  const postDeleteButton = cardElement.querySelector(".cards__delete");
+  const likeButton = cardElement.querySelector(".cards__like-button");
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("cards__like-button_active");
+  });
+
+  postDeleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
 
   cardImageEl.src = CardData.link;
   cardImageEl.alt = CardData.name;
@@ -84,20 +100,19 @@ function handleProfileAddSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardLinkInput.value;
-  renderCard({ name, link }, cardsWrap);
-  closePopup(ProfileAddModal);
+  renderCard({ name, link });
 }
 
 function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
-  cardsWrap.prepend(cardElement);
+  cardList.prepend(cardElement);
 }
 
 // ! Event Listeners
 
 profileCloseButton.addEventListener("click", closePopup);
-
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+ProfileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
 profileEditButton.addEventListener("click", () => {
   modalName.value = profileName.textContent.trim();
@@ -105,9 +120,8 @@ profileEditButton.addEventListener("click", () => {
   profileEditModal.classList.add("modal_opened");
 });
 
-initialCards.forEach((CardData) => {
-  const cardElement = getCardElement(CardData);
-  cardList.prepend(cardElement);
+initialCards.forEach((cardData) => {
+  renderCard(cardData, cardList);
 });
 
 ProfileAddButton.addEventListener("click", () => {
@@ -115,12 +129,3 @@ ProfileAddButton.addEventListener("click", () => {
 });
 
 ProfileAddClose.addEventListener("click", closeAddForm);
-
-const likeButton = document.querySelectorAll("#cards-like-button");
-likeButton.forEach((likeButton) => {
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("cards__like-button_active");
-  });
-});
-
-profileAddModal.addEventListener("submit", handleProfileAddSubmit);
