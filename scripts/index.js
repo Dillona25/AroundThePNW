@@ -2,28 +2,28 @@
 
 const initialCards = [
   {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    name: "Mt Hood",
+    link: "https://images.unsplash.com/photo-1663947718266-e5cfe7e95271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
   },
   {
-    name: "lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    name: "Multnomah Falls",
+    link: "https://images.unsplash.com/photo-1657518860188-daa43c146ed8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
   },
   {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    name: "Diablo Lake",
+    link: "https://images.unsplash.com/photo-1521400259647-cec809312f3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
   },
   {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    name: "Mt Rainier",
+    link: "https://images.unsplash.com/photo-1568226292321-dd67ff8b3b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
   },
   {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    name: "Mt St Helens",
+    link: "https://images.unsplash.com/photo-1616684553557-82371dfba65f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80",
   },
   {
-    name: "Lago Di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg ",
+    name: "Oregon Coast",
+    link: "https://images.unsplash.com/photo-1602966287996-dbdb3d69d36c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
   },
 ];
 
@@ -49,7 +49,7 @@ const profileSubtitle = document.querySelector(".profile__content-subtitle");
 const modalName = document.querySelector(".modal__name");
 const modalSubtitle = document.querySelector(".modal__subtitle");
 const ProfileAddButton = document.querySelector(".profile__add-button");
-const ProfileAddClose = document.querySelector(".modal__close");
+const ProfileAddClose = document.querySelector(".modal__add-close");
 
 //* Form Data
 const cardTitleInput = document.querySelector(".modal__input_type_name");
@@ -57,8 +57,8 @@ const cardLinkInput = document.querySelector(".modal__input_type_subtitle");
 
 // ! Functions
 
-function closePopup() {
-  profileEditModal.classList.remove("modal_opened");
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
 }
 
 function getCardElement(CardData) {
@@ -85,15 +85,11 @@ function getCardElement(CardData) {
   return cardElement;
 }
 
-function closeAddForm() {
-  ProfileAddModal.classList.remove("modal_opened");
-}
-
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = modalName.value;
   profileSubtitle.textContent = modalSubtitle.value;
-  closePopup();
+  closeEditForm();
 }
 
 function handleProfileAddSubmit(e) {
@@ -101,6 +97,7 @@ function handleProfileAddSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardLinkInput.value;
   renderCard({ name, link });
+  closeAddForm();
 }
 
 function renderCard(cardData) {
@@ -110,7 +107,14 @@ function renderCard(cardData) {
 
 // ! Event Listeners
 
-profileCloseButton.addEventListener("click", closePopup);
+profileCloseButton.addEventListener("click", () => {
+  closeModal(profileEditModal);
+});
+
+ProfileAddClose.addEventListener("click", () => {
+  closeModal(ProfileAddModal);
+});
+
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 ProfileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
@@ -127,5 +131,3 @@ initialCards.forEach((cardData) => {
 ProfileAddButton.addEventListener("click", () => {
   ProfileAddModal.classList.add("modal_opened");
 });
-
-ProfileAddClose.addEventListener("click", closeAddForm);
