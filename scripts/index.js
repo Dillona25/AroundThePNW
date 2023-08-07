@@ -36,24 +36,22 @@ const cardTemplate = document
 //* Wrappers
 
 const cardList = document.querySelector(".cards__list");
-const profileEditForm = document.querySelector("#profile-edit-modal");
+const profileEditForm = document.querySelector("#modal-edit-form");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const ProfileAddModal = document.querySelector("#profile-add-modal");
 const ProfileAddForm = document.querySelector("#modal-form-add");
 
 //* Buttons and other DOM nodes
-const profileEditButton = document.querySelector("#profile-edit-button");
-const profileCloseButton = document.querySelector("#modal-close");
-const profileName = document.querySelector("#profile-name");
-const profileSubtitle = document.querySelector("#profile_subtitle");
-const modalName = document.querySelector("#modal__name");
-const modalSubtitle = document.querySelector("#modal__subtitle");
-const ProfileAddButton = document.querySelector("#profile-add-button");
-const ProfileAddClose = document.querySelector("#modal-add-close");
+const profileEditButton = document.querySelector(".profile__edit-button");
+const profileCloseButton = document.querySelector(".modal__close");
+const profileName = document.querySelector(".profile__content-name");
+const profileSubtitle = document.querySelector(".profile__content-subtitle");
+const modalName = document.querySelector(".modal__name");
+const modalSubtitle = document.querySelector(".modal__subtitle");
+const ProfileAddButton = document.querySelector(".profile__add-button");
+const ProfileAddClose = document.querySelector(".modal__close");
 
 //* Form Data
-const nameInput = document.querySelector("#modal__add-title");
-const jobInput = document.querySelector("#modal__add-subtitle");
 const cardTitleInput = document.querySelector(".modal__input_type_name");
 const cardLinkInput = document.querySelector(".modal__input_type_subtitle");
 
@@ -66,7 +64,9 @@ function closePopup() {
 function getCardElement(CardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".cards__image");
-  const cardDescriptionEL = cardElement.querySelector(".cards__description");
+  const cardDescriptionEL = cardElement.querySelector(
+    ".cards__description-text"
+  );
   const postDeleteButton = cardElement.querySelector(".cards__delete");
   const likeButton = cardElement.querySelector(".cards__like-button");
 
@@ -93,7 +93,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = modalName.value;
   profileSubtitle.textContent = modalSubtitle.value;
-  closePopup(profileEditModal);
+  closePopup();
 }
 
 function handleProfileAddSubmit(e) {

@@ -30,23 +30,11 @@
             class="profile__image"
           />
           <div class="profile__content">
-            <h1 class="profile__content-name" id="profile-name">
-              Jacques Cousteau
-            </h1>
-            <button
-              type="button"
-              class="profile__edit-button"
-              id="profile-edit-button"
-            ></button>
-            <p class="profile__content-subtitle" id="profile_subtitle">
-              Explorer
-            </p>
+            <h1 class="profile__content-name">Jacques Cousteau</h1>
+            <button type="button" class="profile__edit-button"></button>
+            <p class="profile__content-subtitle">Explorer</p>
           </div>
-          <button
-            type="button"
-            class="profile__add-button"
-            id="profile-add-button"
-          ></button>
+          <button type="button" class="profile__add-button"></button>
         </section>
         <section class="cards">
           <ul class="cards__list" id="card-list"></ul>
@@ -60,22 +48,20 @@
     <!-- Modal Edit form -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal-close"></button>
+        <button class="modal__close"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
+        <form class="modal__form" id="modal-edit-form">
           <input
             type="text"
             name="name"
             class="modal__name"
             placeholder="Name"
-            id="modal__name"
           />
           <input
             type="text"
             name="subtitle"
             class="modal__subtitle"
             placeholder="Description"
-            id="modal__subtitle"
           />
           <button type="submit" class="modal__button">Save</button>
         </form>
@@ -85,7 +71,7 @@
     <!-- Modal Add form -->
     <div class="modal" id="profile-add-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal-add-close"></button>
+        <button class="modal__close"></button>
         <p class="modal__heading">New place</p>
         <form class="modal__form" id="modal-form-add">
           <input
@@ -93,14 +79,12 @@
             name="title"
             class="modal__name modal__input_type_name"
             placeholder="Title"
-            id="modal-title"
           />
           <input
             type="text"
             name="subtitle"
             class="modal__subtitle modal__input_type_subtitle"
             placeholder="Image link"
-            id="modal-link"
           />
           <button id="modal-add-submit" type="submit" class="modal__button">
             Create
@@ -115,7 +99,7 @@
         <img class="cards__image" id="cards-image" src="" alt="" />
         <button id="post-delete-button" class="cards__delete"></button>
         <div class="cards__description">
-          <h2 class="cards__description-text" id="cards-description"></h2>
+          <h2 class="cards__description-text"></h2>
           <button
             type="button"
             class="cards__like-button"
