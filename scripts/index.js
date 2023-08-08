@@ -52,7 +52,7 @@ const modalSubtitle = document.querySelector(".modal__subtitle");
 const ProfileAddButton = document.querySelector(".profile__add-button");
 const ProfileAddClose = document.querySelector(".modal__add-close");
 const imageModalClose = document.querySelector(".modal__image-close");
-const imageModalCaption = document.querySelector(".image__modal-caption");
+const imageModalCaption = document.querySelector(".modal__image-caption");
 
 //* Form Data
 const cardTitleInput = document.querySelector(".modal__input_type_name");
@@ -89,6 +89,12 @@ function getCardElement(CardData) {
   cardImageEl.src = CardData.link;
   cardImageEl.alt = CardData.name;
   cardDescriptionEL.textContent = CardData.name;
+
+  cardImageEl.addEventListener("click", () => {
+    modalImageElement.src = CardData.link;
+    imageModalCaption.src = CardData.Name;
+    openModal(imageModal);
+  });
 
   return cardElement;
 }

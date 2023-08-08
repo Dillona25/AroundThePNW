@@ -116,6 +116,46 @@
   border-radius: 2px;
 }
 
+.modal__image {
+  width: 433px;
+  height: 540px;
+  max-width: 75vw;
+  max-height: 75vh;
+  padding: 0;
+  margin: auto;
+  position: relative;
+}
+
+.modal__image-container {
+  margin: auto;
+}
+
+.modal__image-close {
+  background-image: url(../images/Close\ Icon.svg);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 288px;
+  margin: 5px;
+}
+
+.modal__image-caption {
+  width: 291px;
+  height: 12px;
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+}
+
 @media screen and (max-width: 550px) {
   .modal__container {
     max-width: 282px;
