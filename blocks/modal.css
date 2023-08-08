@@ -6,7 +6,6 @@
   right: 0;
   left: 0;
   z-index: 5;
-  padding: 0 19px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -140,7 +139,7 @@
   width: 40px;
   height: 40px;
   position: absolute;
-  top: 288px;
+  top: 305px;
   margin: 5px;
 }
 
@@ -198,5 +197,22 @@
   .modal__button {
     max-width: 238px;
     max-height: 46px;
+  }
+
+  .modal__image {
+    max-width: 240px;
+    max-height: 299px;
+  }
+
+  .modal__image-close {
+    top: 420px;
+  }
+}
+
+@media screen and (max-width: 395px) {
+  .modal__add-close {
+    right: 0;
+    width: 26px;
+    height: 26px;
   }
 }
