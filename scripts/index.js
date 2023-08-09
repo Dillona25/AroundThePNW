@@ -44,14 +44,14 @@ const imageModal = document.querySelector("#image-modal");
 
 //* Buttons and other DOM nodes
 const profileEditButton = document.querySelector(".profile__edit-button");
-const profileCloseButton = document.querySelector(".modal__close");
+const profileCloseButton = profileEditModal.querySelector(".modal__close");
 const profileName = document.querySelector(".profile__content-name");
 const profileSubtitle = document.querySelector(".profile__content-subtitle");
 const modalName = document.querySelector(".modal__name");
 const modalSubtitle = document.querySelector(".modal__subtitle");
 const profileAddButton = document.querySelector(".profile__add-button");
-const profileAddClose = document.querySelector(".modal__close");
-const imageModalClose = document.querySelector(".modal__close");
+const profileAddClose = profileAddModal.querySelector(".modal__close");
+const imageModalClose = imageModal.querySelector(".modal__close");
 const imageModalCaption = document.querySelector(".modal__image-caption");
 
 //* Form Data
