@@ -27,7 +27,7 @@ const initialCards = [
   },
 ];
 
-//* Templates
+//* Template
 
 const cardTemplate = document
   .querySelector("#card-template")
@@ -38,8 +38,8 @@ const cardTemplate = document
 const cardList = document.querySelector(".cards__list");
 const profileEditForm = document.querySelector("#modal-edit-form");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const ProfileAddModal = document.querySelector("#profile-add-modal");
-const ProfileAddForm = document.querySelector("#modal-form-add");
+const profileAddModal = document.querySelector("#profile-add-modal");
+const profileAddForm = document.querySelector("#modal-form-add");
 const imageModal = document.querySelector("#image-modal");
 
 //* Buttons and other DOM nodes
@@ -49,14 +49,14 @@ const profileName = document.querySelector(".profile__content-name");
 const profileSubtitle = document.querySelector(".profile__content-subtitle");
 const modalName = document.querySelector(".modal__name");
 const modalSubtitle = document.querySelector(".modal__subtitle");
-const ProfileAddButton = document.querySelector(".profile__add-button");
-const ProfileAddClose = document.querySelector(".modal__add-close");
-const imageModalClose = document.querySelector(".modal__image-close");
+const profileAddButton = document.querySelector(".profile__add-button");
+const profileAddClose = document.querySelector(".modal__close");
+const imageModalClose = document.querySelector(".modal__close");
 const imageModalCaption = document.querySelector(".modal__image-caption");
 
 //* Form Data
-const cardTitleInput = document.querySelector(".modal__input_type_name");
-const cardLinkInput = document.querySelector(".modal__input_type_subtitle");
+const cardTitleInput = document.querySelector(".modal__name_input");
+const cardLinkInput = document.querySelector(".modal__subtitle_input");
 const modalImageElement = imageModal.querySelector(".modal__image");
 
 // ! Functions
@@ -69,7 +69,7 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
 
-function getCardElement(CardData) {
+function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".cards__image");
   const cardDescriptionEL = cardElement.querySelector(
@@ -86,13 +86,13 @@ function getCardElement(CardData) {
     cardElement.remove();
   });
 
-  cardImageEl.src = CardData.link;
-  cardImageEl.alt = CardData.name;
-  cardDescriptionEL.textContent = CardData.name;
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
+  cardDescriptionEL.textContent = cardData.name;
 
   cardImageEl.addEventListener("click", () => {
-    modalImageElement.src = CardData.link;
-    imageModalCaption.textContent = CardData.name;
+    modalImageElement.src = cardData.link;
+    imageModalCaption.textContent = cardData.name;
     openModal(imageModal);
   });
 
@@ -111,7 +111,8 @@ function handleProfileAddSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardLinkInput.value;
   renderCard({ name, link });
-  closeModal(ProfileAddModal);
+  closeModal(profileAddModal);
+  profileAddForm.reset();
 }
 
 function renderCard(cardData) {
@@ -126,8 +127,8 @@ profileCloseButton.addEventListener("click", () => {
   closeModal(profileEditModal);
 });
 
-ProfileAddClose.addEventListener("click", () => {
-  closeModal(ProfileAddModal);
+profileAddClose.addEventListener("click", () => {
+  closeModal(profileAddModal);
 });
 
 imageModalClose.addEventListener("click", () => {
@@ -135,7 +136,7 @@ imageModalClose.addEventListener("click", () => {
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-ProfileAddForm.addEventListener("submit", handleProfileAddSubmit);
+profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
 profileEditButton.addEventListener("click", () => {
   modalName.value = profileName.textContent.trim();
@@ -147,8 +148,8 @@ initialCards.forEach((cardData) => {
   renderCard(cardData, cardList);
 });
 
-ProfileAddButton.addEventListener("click", () => {
-  ProfileAddModal.classList.add("modal_opened");
+profileAddButton.addEventListener("click", () => {
+  openModal(profileAddModal);
 });
 
 modalImageElement.addEventListener("click", () => {
