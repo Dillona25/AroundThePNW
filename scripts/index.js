@@ -92,6 +92,7 @@ function getCardElement(cardData) {
 
   cardImageEl.addEventListener("click", () => {
     modalImageElement.src = cardData.link;
+    modalImageElement.alt = cardData.name;
     imageModalCaption.textContent = cardData.name;
     openModal(imageModal);
   });
