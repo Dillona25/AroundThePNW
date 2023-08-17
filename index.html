@@ -53,16 +53,26 @@
         <form class="modal__form" id="modal-edit-form">
           <input
             type="text"
+            id="owner-name"
             name="name"
-            class="modal__name"
+            class="modal__input modal__name moal__input_type_error"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span id="owner-name-error" class="modal__error"></span>
           <input
             type="text"
+            id="owner-subtitle"
             name="subtitle"
-            class="modal__subtitle"
+            class="modal__input modal__subtitle"
             placeholder="Description"
+            minlength="2"
+            maxlength="200"
+            required
           />
+          <span id="owner-subtitle-error" class="modal__error"></span>
           <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
@@ -77,13 +87,13 @@
           <input
             type="text"
             name="title"
-            class="modal__name modal__name_input"
+            class="modal__input modal__name"
             placeholder="Title"
           />
           <input
             type="text"
             name="subtitle"
-            class="modal__subtitle modal__subtitle_input"
+            class="modal__input modal__subtitle"
             placeholder="Image link"
           />
           <button id="modal-add-submit" type="submit" class="modal__button">
@@ -118,5 +128,6 @@
       </li>
     </template>
     <script src="./scripts/index.js"></script>
+    <scrpt src="./scripts/validation.js"></scrpt>
   </body>
 </html>
