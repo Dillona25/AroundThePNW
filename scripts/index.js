@@ -55,8 +55,8 @@ const imageModalClose = imageModal.querySelector(".modal__close");
 const imageModalCaption = document.querySelector(".modal__image-caption");
 
 //* Form Data
-const cardTitleInput = document.querySelector(".modal__name_input");
-const cardLinkInput = document.querySelector(".modal__subtitle_input");
+const cardTitleInput = document.querySelector(".modal__name");
+const cardLinkInput = document.querySelector(".modal__subtitle");
 const modalImageElement = imageModal.querySelector(".modal__image");
 
 // ! Functions
