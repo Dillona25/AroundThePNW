@@ -33,7 +33,7 @@ const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".cards__content");
 
-//* Wrappers
+///* Wrappers
 
 const cardList = document.querySelector(".cards__list");
 const profileEditForm = document.querySelector("#modal-edit-form");
@@ -48,15 +48,15 @@ const profileCloseButton = profileEditModal.querySelector(".modal__close");
 const profileName = document.querySelector(".profile__content-name");
 const profileSubtitle = document.querySelector(".profile__content-subtitle");
 const modalName = document.querySelector(".modal__name");
-const modalSubtitle = document.querySelector(".modal__subtitle");
+const modalSubtitle = document.querySelector(".modal__bio");
 const profileAddButton = document.querySelector(".profile__add-button");
 const profileAddClose = profileAddModal.querySelector(".modal__close");
 const imageModalClose = imageModal.querySelector(".modal__close");
 const imageModalCaption = document.querySelector(".modal__image-caption");
 
 //* Form Data
-const cardTitleInput = document.querySelector(".modal__name");
-const cardLinkInput = document.querySelector(".modal__subtitle");
+const cardTitleInput = document.querySelector(".modal__add");
+const cardLinkInput = document.querySelector(".modal__link");
 const modalImageElement = imageModal.querySelector(".modal__image");
 
 // ! Functions
