@@ -159,18 +159,7 @@ modalImageElement.addEventListener("click", () => {
 
 document.addEventListener("keydown", (evt) => {
   if (evt.key === "Escape") {
-    closeModal(profileEditModal);
-  }
-});
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    closeModal(profileAddModal);
-  }
-});
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    closeModal(imageModal);
+    const openPopup = document.querySelector(".modal_opened");
+    closeModal(openPopup);
   }
 });
