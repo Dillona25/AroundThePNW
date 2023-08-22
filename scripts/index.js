@@ -61,12 +61,21 @@ const modalImageElement = imageModal.querySelector(".modal__image");
 
 //* Functions
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openPopup = document.querySelector(".modal_opened");
+    closeModal(openPopup);
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscape);
 }
 
 function getCardElement(cardData) {
@@ -158,19 +167,6 @@ modalImageElement.addEventListener("click", () => {
 });
 
 //keydown function for modals
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    const openPopup = document.querySelector(".modal_opened");
-    closeModal(openPopup);
-  }
-});
-
-document.addEventListener("click", function (evt) {
-  if (evt.target.matches() || evt.target.closest()) {
-    closeModal();
-  }
-});
 
 imageModal.addEventListener("mousedown", (evt) => {
   if (
