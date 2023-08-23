@@ -44,14 +44,12 @@ const imageModal = document.querySelector("#image-modal");
 
 //* Buttons and other DOM nodes
 const profileEditButton = document.querySelector(".profile__edit-button");
-const profileCloseButton = profileEditModal.querySelector(".modal__close");
+const modalCloseButton = profileEditModal.querySelector(".modal__close");
 const profileName = document.querySelector(".profile__content-name");
 const profileSubtitle = document.querySelector(".profile__content-subtitle");
 const modalName = document.querySelector(".modal__name");
 const modalSubtitle = document.querySelector(".modal__bio");
 const profileAddButton = document.querySelector(".profile__add-button");
-const profileAddClose = profileAddModal.querySelector(".modal__close");
-const imageModalClose = imageModal.querySelector(".modal__close");
 const imageModalCaption = document.querySelector(".modal__image-caption");
 
 //* Form Data
@@ -132,19 +130,6 @@ function renderCard(cardData) {
 
 //*  Event Listeners
 
-profileCloseButton.addEventListener("click", () => {
-  console.log(profileEditModal);
-  closeModal(profileEditModal);
-});
-
-profileAddClose.addEventListener("click", () => {
-  closeModal(profileAddModal);
-});
-
-imageModalClose.addEventListener("click", () => {
-  closeModal(imageModal);
-});
-
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
@@ -171,7 +156,7 @@ modalImageElement.addEventListener("click", () => {
 imageModal.addEventListener("mousedown", (evt) => {
   if (
     evt.target.classList.contains("modal") ||
-    evt.target.classList.contains(".modal__close")
+    evt.target.classList.contains("modal__close")
   ) {
     closeModal(imageModal);
   }
@@ -180,7 +165,7 @@ imageModal.addEventListener("mousedown", (evt) => {
 profileAddModal.addEventListener("mousedown", (evt) => {
   if (
     evt.target.classList.contains("modal") ||
-    evt.target.classList.contains(".modal__close")
+    evt.target.classList.contains("modal__close")
   ) {
     closeModal(profileAddModal);
   }
@@ -189,7 +174,7 @@ profileAddModal.addEventListener("mousedown", (evt) => {
 profileEditModal.addEventListener("mousedown", (evt) => {
   if (
     evt.target.classList.contains("modal") ||
-    evt.target.classList.contains(".modal__close")
+    evt.target.classList.contains("modal__close")
   ) {
     closeModal(profileEditModal);
   }
