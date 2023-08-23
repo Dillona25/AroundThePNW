@@ -8,7 +8,7 @@ const showErrorMessage = (input, { errorClass, inputErrorClass }) => {
 const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
   const errorMessage = document.querySelector(`#${input.id}-error`);
   errorMessage.classList.remove(errorClass);
-  errorMessage.classList.remove(inputErrorClass);
+  input.classList.remove(inputErrorClass);
   errorMessage.textContent = "";
 };
 
@@ -46,6 +46,7 @@ const enableValidation = ({
     });
     const formInputs = [...form.querySelectorAll(inputSelector)];
     const formButton = form.querySelector(submitButtonSelector);
+    toggleButtonState(formInputs, formButton, options);
     console.log(formInputs);
     formInputs.forEach((input) => {
       input.addEventListener("input", () => {

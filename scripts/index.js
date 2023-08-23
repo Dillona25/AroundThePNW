@@ -147,10 +147,6 @@ profileAddButton.addEventListener("click", () => {
   openModal(profileAddModal);
 });
 
-modalImageElement.addEventListener("click", () => {
-  openModal(imageModal);
-});
-
 //keydown function for modals
 
 imageModal.addEventListener("mousedown", (evt) => {
