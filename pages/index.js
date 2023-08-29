@@ -1,3 +1,5 @@
+import Card from "../components/card.js";
+
 //* Arrays
 
 const initialCards = [
@@ -175,3 +177,12 @@ profileEditModal.addEventListener("mousedown", (evt) => {
     closeModal(profileEditModal);
   }
 });
+
+//* Sprint 7 refactored code
+
+const cardData = {
+  name: "Mt Hood",
+  link: "https://images.unsplash.com/photo-1663947718266-e5cfe7e95271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+};
+
+const card = new Card(cardData);
