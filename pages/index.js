@@ -84,16 +84,16 @@ function getCardElement(cardData) {
   const cardDescriptionEL = cardElement.querySelector(
     ".cards__description-text"
   );
-  const postDeleteButton = cardElement.querySelector(".cards__delete");
-  const likeButton = cardElement.querySelector(".cards__like-button");
+  // const postDeleteButton = cardElement.querySelector(".cards__delete");
+  // const likeButton = cardElement.querySelector(".cards__like-button");
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("cards__like-button_active");
-  });
+  // likeButton.addEventListener("click", () => {
+  //   likeButton.classList.toggle("cards__like-button_active");
+  // });
 
-  postDeleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  // postDeleteButton.addEventListener("click", () => {
+  //   cardElement.remove();
+  // });
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -185,4 +185,5 @@ const cardData = {
   link: "https://images.unsplash.com/photo-1663947718266-e5cfe7e95271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
 };
 
-const card = new Card(cardData);
+const card = new Card(cardData, "#card-template");
+card.getCard();
