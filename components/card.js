@@ -6,7 +6,6 @@ export default class Card {
   }
 
   _setEventListeners() {
-    //.cards__delete
     this._cardElement
       .querySelector(".cards__like-button")
       .addEventListener("click", () => {
@@ -23,7 +22,7 @@ export default class Card {
   _handLikeIcon() {
     this._cardElement
       .querySelector(".cards__like-button")
-      .classList.toggle("card__like-button_active");
+      .classList.toggle("cards__like-button_active");
   }
 
   _handleDeleteIcon() {
@@ -32,12 +31,16 @@ export default class Card {
   }
 
   getCard() {
-    // get the card view
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".cards__content")
       .cloneNode(true);
-    // set event listeners
     this._setEventListeners();
+
+    this._cardElement.querySelector(".cards__image").src = this._link;
+    this._cardElement.querySelector(".cards__description-text").textContent =
+      this._name;
+
+    return this._cardElement;
   }
 }

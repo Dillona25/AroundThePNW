@@ -78,36 +78,36 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscape);
 }
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".cards__image");
-  const cardDescriptionEL = cardElement.querySelector(
-    ".cards__description-text"
-  );
-  // const postDeleteButton = cardElement.querySelector(".cards__delete");
-  // const likeButton = cardElement.querySelector(".cards__like-button");
+// function getCardElement(cardData) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImageEl = cardElement.querySelector(".cards__image");
+//   const cardDescriptionEL = cardElement.querySelector(
+//     ".cards__description-text"
+//   );
+//   // const postDeleteButton = cardElement.querySelector(".cards__delete");
+//   // const likeButton = cardElement.querySelector(".cards__like-button");
 
-  // likeButton.addEventListener("click", () => {
-  //   likeButton.classList.toggle("cards__like-button_active");
-  // });
+//   // likeButton.addEventListener("click", () => {
+//   //   likeButton.classList.toggle("cards__like-button_active");
+//   // });
 
-  // postDeleteButton.addEventListener("click", () => {
-  //   cardElement.remove();
-  // });
+//   // postDeleteButton.addEventListener("click", () => {
+//   //   cardElement.remove();
+//   // });
 
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardDescriptionEL.textContent = cardData.name;
+//   cardImageEl.src = cardData.link;
+//   cardImageEl.alt = cardData.name;
+//   cardDescriptionEL.textContent = cardData.name;
 
-  cardImageEl.addEventListener("click", () => {
-    modalImageElement.src = cardData.link;
-    modalImageElement.alt = cardData.name;
-    imageModalCaption.textContent = cardData.name;
-    openModal(imageModal);
-  });
+//   cardImageEl.addEventListener("click", () => {
+//     modalImageElement.src = cardData.link;
+//     modalImageElement.alt = cardData.name;
+//     imageModalCaption.textContent = cardData.name;
+//     openModal(imageModal);
+//   });
 
-  return cardElement;
-}
+//   return cardElement;
+// }
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -126,7 +126,8 @@ function handleProfileAddSubmit(e) {
 }
 
 function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
+  const card = new Card(cardData, "#card-template");
+  const cardElement = card.getCard();
   cardList.prepend(cardElement);
 }
 
@@ -186,4 +187,5 @@ const cardData = {
 };
 
 const card = new Card(cardData, "#card-template");
-card.getCard();
+const cardElement = card.getCard();
+console.log(cardElement);
