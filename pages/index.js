@@ -1,4 +1,5 @@
-import Card from "../components/card.js";
+import Card from "../components/Card.js";
+import FromValidator from "../components/FormValidator.js";
 
 //* Arrays
 
@@ -179,7 +180,7 @@ profileEditModal.addEventListener("mousedown", (evt) => {
   }
 });
 
-//* Sprint 7 refactored code
+//* Sprint 7 card class
 
 const cardData = {
   name: "Mt Hood",
@@ -189,3 +190,16 @@ const cardData = {
 const card = new Card(cardData, "#card-template");
 const cardElement = card.getCard();
 console.log(cardElement);
+
+//* Sprint 7 form validator class
+
+const FormValidatorOptions = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormValidator = new FormValidator();
+editFormValidator.enableValidation();
