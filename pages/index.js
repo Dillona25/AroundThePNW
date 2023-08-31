@@ -193,6 +193,9 @@ console.log(cardElement);
 
 //* Sprint 7 form validator class
 
+const editFormElement = profileEditModal.querySelector("#modal-edit-form");
+const addFormElement = profileAddModal.querySelector("#modal-form-add");
+
 const FormValidatorOptions = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
@@ -201,5 +204,13 @@ const FormValidatorOptions = {
   errorClass: "modal__error_visible",
 };
 
-const editFormValidator = new FormValidator();
+const editFormValidator = new FormValidator(
+  FormValidatorOptions,
+  editFormElement
+);
+const addFormValidator = new FormValidator(
+  FormValidatorOptions,
+  addFormElement
+);
 editFormValidator.enableValidation();
+addFormValidator.enableValidation();
