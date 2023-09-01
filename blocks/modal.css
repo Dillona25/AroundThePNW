@@ -122,6 +122,10 @@
   margin-top: 31px;
 }
 
+.modal__button:hover {
+  cursor: pointer;
+}
+
 .modal__button_disabled {
   color: #000;
   background-color: #f6f6f6;

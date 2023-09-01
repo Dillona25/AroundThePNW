@@ -123,6 +123,7 @@ initialCards.forEach((cardData) => {
 });
 
 profileAddButton.addEventListener("click", () => {
+  addFormValidator.resetValidation();
   openModal(profileAddModal);
 });
 
