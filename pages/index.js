@@ -60,8 +60,7 @@ const cardTitleInput = document.querySelector(".modal__add");
 const cardLinkInput = document.querySelector(".modal__link");
 const modalImageElement = imageModal.querySelector(".modal__image");
 
-//* Functions
-
+//* Modal Functions
 function handleEscape(evt) {
   if (evt.key === "Escape") {
     const openPopup = document.querySelector(".modal_opened");
@@ -78,37 +77,6 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscape);
 }
-
-// function getCardElement(cardData) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   const cardImageEl = cardElement.querySelector(".cards__image");
-//   const cardDescriptionEL = cardElement.querySelector(
-//     ".cards__description-text"
-//   );
-//   // const postDeleteButton = cardElement.querySelector(".cards__delete");
-//   // const likeButton = cardElement.querySelector(".cards__like-button");
-
-//   // likeButton.addEventListener("click", () => {
-//   //   likeButton.classList.toggle("cards__like-button_active");
-//   // });
-
-//   // postDeleteButton.addEventListener("click", () => {
-//   //   cardElement.remove();
-//   // });
-
-//   cardImageEl.src = cardData.link;
-//   cardImageEl.alt = cardData.name;
-//   cardDescriptionEL.textContent = cardData.name;
-
-//   cardImageEl.addEventListener("click", () => {
-//     modalImageElement.src = cardData.link;
-//     modalImageElement.alt = cardData.name;
-//     imageModalCaption.textContent = cardData.name;
-//     openModal(imageModal);
-//   });
-
-//   return cardElement;
-// }
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -131,7 +99,6 @@ function renderCard(cardData) {
   const cardElement = card.getCard();
   cardList.prepend(cardElement);
 }
-
 //*  Event Listeners
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -151,7 +118,26 @@ profileAddButton.addEventListener("click", () => {
   openModal(profileAddModal);
 });
 
-//keydown function for modals
+// function getCardElement(cardData) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImageEl = cardElement.querySelector(".cards__image");
+//   const cardDescriptionEL = cardElement.querySelector(
+//     ".cards__description-text"
+//   );
+
+//   cardImageEl.src = cardData.link;
+//   cardImageEl.alt = cardData.name;
+//   cardDescriptionEL.textContent = cardData.name;
+
+//   cardImageEl.addEventListener("click", () => {
+//     modalImageElement.src = cardData.link;
+//     modalImageElement.alt = cardData.name;
+//     imageModalCaption.textContent = cardData.name;
+//     openModal(imageModal);
+//   });
+
+//   return cardElement;
+// }
 
 imageModal.addEventListener("mousedown", (evt) => {
   if (
@@ -180,8 +166,7 @@ profileEditModal.addEventListener("mousedown", (evt) => {
   }
 });
 
-//* Sprint 7 card class
-
+//* Card.js logic
 const cardData = {
   name: "Mt Hood",
   link: "https://images.unsplash.com/photo-1663947718266-e5cfe7e95271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
@@ -191,7 +176,7 @@ const card = new Card(cardData, "#card-template");
 const cardElement = card.getCard();
 console.log(cardElement);
 
-//* Sprint 7 form validator class
+//* FormValidator.js logic
 
 const editFormElement = profileEditModal.querySelector("#modal-edit-form");
 const addFormElement = profileAddModal.querySelector("#modal-form-add");
