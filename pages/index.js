@@ -114,6 +114,7 @@ profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 profileEditButton.addEventListener("click", () => {
   modalName.value = profileName.textContent.trim();
   modalSubtitle.value = profileSubtitle.textContent.trim();
+  editFormValidator.resetValidation();
   openModal(profileEditModal);
 });
 
@@ -151,16 +152,6 @@ profileEditModal.addEventListener("mousedown", (evt) => {
     closeModal(profileEditModal);
   }
 });
-
-//* Card.js logic
-const cardData = {
-  name: "Mt Hood",
-  link: "https://images.unsplash.com/photo-1663947718266-e5cfe7e95271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-};
-
-const card = new Card(cardData, "#card-template");
-const cardElement = card.getCard();
-console.log(cardElement);
 
 //* FormValidator.js logic
 
