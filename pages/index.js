@@ -94,8 +94,15 @@ function handleProfileAddSubmit(e) {
   profileAddForm.reset();
 }
 
+function handleCardClick(cardData) {
+  modalImageElement.src = cardData.link;
+  modalImageElement.alt = cardData.name;
+  imageModalCaption.textContent = cardData.name;
+  openModal(imageModal);
+}
+
 function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template");
+  const card = new Card(cardData, handleCardClick, "#card-template");
   const cardElement = card.getCard();
   cardList.prepend(cardElement);
 }
@@ -117,27 +124,6 @@ initialCards.forEach((cardData) => {
 profileAddButton.addEventListener("click", () => {
   openModal(profileAddModal);
 });
-
-// function getCardElement(cardData) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   const cardImageEl = cardElement.querySelector(".cards__image");
-//   const cardDescriptionEL = cardElement.querySelector(
-//     ".cards__description-text"
-//   );
-
-//   cardImageEl.src = cardData.link;
-//   cardImageEl.alt = cardData.name;
-//   cardDescriptionEL.textContent = cardData.name;
-
-//   cardImageEl.addEventListener("click", () => {
-//     modalImageElement.src = cardData.link;
-//     modalImageElement.alt = cardData.name;
-//     imageModalCaption.textContent = cardData.name;
-//     openModal(imageModal);
-//   });
-
-//   return cardElement;
-// }
 
 imageModal.addEventListener("mousedown", (evt) => {
   if (
