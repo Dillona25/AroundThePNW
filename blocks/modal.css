@@ -122,8 +122,9 @@
   margin-top: 31px;
 }
 
-.modal__button:hover {
+.modal__button:hover:not(:disabled) {
   cursor: pointer;
+  opacity: 80%;
 }
 
 .modal__button_disabled {
