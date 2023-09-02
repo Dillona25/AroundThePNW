@@ -71,11 +71,13 @@ function handleEscape(evt) {
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscape);
+  modal.addEventListener("mousedown", closeModalOnClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscape);
+  modal.removeEventListener("mousedown", closeModalOnClick);
 }
 
 function closeModalOnClick(evt) {
@@ -83,7 +85,7 @@ function closeModalOnClick(evt) {
     evt.target.classList.contains("modal") ||
     evt.target.classList.contains("modal__close")
   ) {
-    closeModal(evt.target);
+    closeModal(evt.currentTarget);
   }
 }
 
@@ -135,31 +137,6 @@ profileAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
   openModal(profileAddModal);
 });
-
-//! Add one function to handle these mousedown events
-
-imageModal.addEventListener("mousedown", () => {
-  closeModalOnClick(imageModal);
-});
-
-profileAddModal.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(profileAddModal);
-  }
-});
-
-profileEditModal.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(profileEditModal);
-  }
-});
-//!---------------------------------------------------------!//
 
 //* FormValidator.js logic
 
