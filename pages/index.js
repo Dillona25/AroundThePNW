@@ -166,7 +166,7 @@ profileEditModal.addEventListener("mousedown", (evt) => {
 const editFormElement = profileEditModal.querySelector("#modal-edit-form");
 const addFormElement = profileAddModal.querySelector("#modal-form-add");
 
-const FormValidatorOptions = {
+const formValidatorOptions = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
@@ -175,11 +175,11 @@ const FormValidatorOptions = {
 };
 
 const editFormValidator = new FormValidator(
-  FormValidatorOptions,
+  formValidatorOptions,
   editFormElement
 );
 const addFormValidator = new FormValidator(
-  FormValidatorOptions,
+  formValidatorOptions,
   addFormElement
 );
 editFormValidator.enableValidation();
