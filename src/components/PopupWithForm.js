@@ -12,9 +12,3 @@ class PopupWithForm extends Popup {
     super.close();
   }
 }
-
-//index.js
-
-const newCardPopup = new PopupWithForm("#profile-add-modal", () => {});
-newCardPopup.close();
-newCardPopup.open();

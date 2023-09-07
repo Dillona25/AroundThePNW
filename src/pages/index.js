@@ -70,11 +70,11 @@ function handleEscape(evt) {
   }
 }
 
-// function openModal(modal) {
-//   modal.classList.add("modal_opened");
-//   document.addEventListener("keydown", handleEscape);
-//   modal.addEventListener("mousedown", closeModalOnClick);
-// }
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscape);
+  modal.addEventListener("mousedown", closeModalOnClick);
+}
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -163,3 +163,9 @@ const addFormValidator = new FormValidator(
 );
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+
+//* Popup class logic
+
+const newCardPopup = new PopupWithForm("#profile-add-modal", () => {});
+newCardPopup.close();
+newCardPopup.open();

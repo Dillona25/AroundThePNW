@@ -1,13 +1,17 @@
 export default class Section {
-  constructor({ items, renderer }, //CSS Selector to add card elements) {}
+  constructor({ items, renderer }, containerSelector) {
+    this._initialCards = items;
+    this._renderer = renderer;
+    this._container = document.querySelector(containerSelector);
+  }
 
   renderItems() {
-    //Renders all elements on the page and uses "renderer" function  for each element
+    this.initialCards.forEach((item) => {
+      this._renderer(item);
+    });
   }
 
-  addItem() {
-    //takes DOM element and adds it to container
+  addItem(element) {
+    this._container.prepend(element);
   }
 }
-
-//The Section class doesn't have markup. It receives markup through the callback function and inserts it in the container.

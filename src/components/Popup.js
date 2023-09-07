@@ -4,20 +4,27 @@ export default class Popup {
   }
 
   setEventListeners() {
-    //sets eventlisteners
+    if (
+      evt.target.classList.contains("modal") ||
+      evt.target.classList.contains("modal__close")
+    ) {
+      this.close();
+    }
   }
 
   open() {
-    modal.classList.add("modal_opened");
-    document.addEventListener("keydown", handleEscape);
-    modal.addEventListener("mousedown", closeModalOnClick);
+    this._popupElement.classList.add("modal_opened");
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
   close() {
-    //closes popup
+    this._popupElement.classList.remove("modal_opened");
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
-  _handleEscClose() {
-    //listens for esc button
+  _handleEscClose(evt) {
+    if (evt.key === "Escape") {
+      this.close();
+    }
   }
 }
