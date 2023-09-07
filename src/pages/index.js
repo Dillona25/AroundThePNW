@@ -1,5 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Popup from "../components/Popup.js";
 import "./index.css";
 
 //* Arrays
@@ -69,11 +70,11 @@ function handleEscape(evt) {
   }
 }
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscape);
-  modal.addEventListener("mousedown", closeModalOnClick);
-}
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
+//   document.addEventListener("keydown", handleEscape);
+//   modal.addEventListener("mousedown", closeModalOnClick);
+// }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -162,10 +163,3 @@ const addFormValidator = new FormValidator(
 );
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
-const numbers = [2, 3, 5];
-
-// Arrow function. How will Internet Explorer cope with it?
-const doubledNumbers = numbers.map((number) => number * 2);
-
-console.log(doubledNumbers); // 4, 6, 10
