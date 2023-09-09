@@ -3,6 +3,7 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import "./index.css";
+import { data } from "autoprefixer";
 
 //* Arrays
 
@@ -118,9 +119,7 @@ function handleCardClick(cardData) {
 //* Render Cards
 
 function renderCard(cardData) {
-  const card = new Card(cardData, handleCardClick, "#card-template");
-  const cardElement = card.getCard();
-  cardList.prepend(cardElement);
+  return new Card(cardData, handleCardClick, "#card-template").getCard();
 }
 //*  Event Listeners
 
@@ -163,7 +162,7 @@ const addFormValidator = new FormValidator(
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-//* Section class logic
+//* Section.js
 
 const cardSection = new Section(
   {
@@ -176,6 +175,7 @@ const cardSection = new Section(
 );
 cardSection.renderItems();
 
-//* Popup with form: profile
+//* popupWithForm.js : profile
 
-const profileForm = new PopupWithForm();
+const profileForm = new PopupWithForm({ popupSelector: "#profile-edit-modal" });
+profileForm.setEventListeners();
