@@ -169,6 +169,8 @@ addFormValidator.enableValidation();
 
 //* Section class logic
 
+const sectionClass = new Section(initialCards, renderer(), "#card-list");
+
 //* Popup with form: profile
 
 const profileForm = new PopupWithForm();
