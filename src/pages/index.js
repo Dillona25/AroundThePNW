@@ -167,6 +167,8 @@ const addFormValidator = new FormValidator(
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
+//* Section class logic
+
 //* Popup with form: profile
 
 const profileForm = new PopupWithForm();
