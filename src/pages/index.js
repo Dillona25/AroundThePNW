@@ -2,6 +2,7 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import "./index.css";
 import { data } from "autoprefixer";
 
@@ -175,7 +176,11 @@ const cardSection = new Section(
 );
 cardSection.renderItems();
 
+//* popupWithImage.js
+
+const popupImage = new PopupWithImage(imageModal);
+popupImage.setEventListeners();
+
 //* popupWithForm.js : profile
 
-const profileForm = new PopupWithForm({ popupSelector: "#profile-edit-modal" });
-profileForm.setEventListeners();
+const profileForm = new PopupWithForm("#profile-edit-modal", () => {});
