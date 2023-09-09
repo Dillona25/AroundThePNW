@@ -134,10 +134,6 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-initialCards.forEach((cardData) => {
-  renderCard(cardData, cardList);
-});
-
 profileAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
   openModal(profileAddModal);
@@ -169,7 +165,16 @@ addFormValidator.enableValidation();
 
 //* Section class logic
 
-const sectionClass = new Section(initialCards, renderer(), "#card-list");
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (cardData) => {
+      cardSection.addItem(renderCard(cardData));
+    },
+  },
+  "#card-list"
+);
+cardSection.renderItems();
 
 //* Popup with form: profile
 
