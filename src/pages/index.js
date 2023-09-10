@@ -73,12 +73,6 @@ const modalImageElement = imageModal.querySelector(".modal__image");
 //   }
 // }
 
-// function openModal(modal) {
-//   modal.classList.add("modal_opened");
-//   document.addEventListener("keydown", handleEscape);
-//   modal.addEventListener("mousedown", closeModalOnClick);
-// }
-
 // function closeModal(modal) {
 //   modal.classList.remove("modal_opened");
 //   document.removeEventListener("keydown", handleEscape);
@@ -127,16 +121,16 @@ function renderCard(cardData) {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
-// profileEditButton.addEventListener("click", () => {
-//   modalName.value = profileName.textContent.trim();
-//   modalSubtitle.value = profileSubtitle.textContent.trim();
-//   editFormValidator.resetValidation();
-//   openModal(profileEditModal);
-// });
+profileEditButton.addEventListener("click", () => {
+  modalName.value = profileName.textContent.trim();
+  modalSubtitle.value = profileSubtitle.textContent.trim();
+  editFormValidator.resetValidation();
+  profileForm.open();
+});
 
 profileAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
-  openModal(profileAddModal);
+  addCardForm.open();
 });
 
 //* FormValidator.js logic
@@ -178,9 +172,12 @@ cardSection.renderItems();
 
 //* popupWithImage.js
 
-// const popupImage = new PopupWithImage({ popupSelector: "#image-modal" });
-// popupImage.setEventListeners();
+// const popupImage = new PopupWithImage("#image-modal", () => {});
 
-//* popupWithForm.js : profile
+//* popupWithForm.js: Edit profile
 
 const profileForm = new PopupWithForm("#profile-edit-modal", () => {});
+
+//* popupWuthForm: Add Card
+
+const addCardForm = new PopupWithForm("#profile-add-modal", () => {});
