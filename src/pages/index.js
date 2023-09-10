@@ -3,6 +3,7 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 import "./index.css";
 import { data } from "autoprefixer";
 
@@ -73,37 +74,6 @@ const modalImageElement = imageModal.querySelector(".modal__image");
 //   }
 // }
 
-// function closeModal(modal) {
-//   modal.classList.remove("modal_opened");
-//   document.removeEventListener("keydown", handleEscape);
-//   modal.removeEventListener("mousedown", closeModalOnClick);
-// }
-
-// function closeModalOnClick(evt) {
-//   if (
-//     evt.target.classList.contains("modal") ||
-//     evt.target.classList.contains("modal__close")
-//   ) {
-//     closeModal(evt.currentTarget);
-//   }
-// }
-
-// function handleProfileEditSubmit(e) {
-//   e.preventDefault();
-//   profileName.textContent = modalName.value;
-//   profileSubtitle.textContent = modalSubtitle.value;
-//   closeModal(profileEditModal);
-// }
-
-// function handleProfileAddSubmit(e) {
-//   e.preventDefault();
-//   const name = cardTitleInput.value;
-//   const link = cardLinkInput.value;
-//   renderCard({ name, link });
-//   closeModal(profileAddModal);
-//   profileAddForm.reset();
-// }
-
 function handleCardClick(cardData) {
   modalImageElement.src = cardData.link;
   modalImageElement.alt = cardData.name;
@@ -116,10 +86,6 @@ function handleCardClick(cardData) {
 function renderCard(cardData) {
   return new Card(cardData, handleCardClick, "#card-template").getCard();
 }
-//*  Event Listeners
-
-// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-// profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
 //* FormValidator.js logic
 
@@ -160,7 +126,8 @@ cardSection.renderItems();
 
 //* popupWithImage.js
 
-// const popupImage = new PopupWithImage("#image-modal", () => {});
+// const popupImage = new PopupWithImage({ popupSelector: "#image-modal" });
+// popupImage.setEventListeners();
 
 //* popupWithForm.js: Edit profile
 
@@ -168,10 +135,8 @@ profileEditButton.addEventListener("click", () => {
   profileForm.open();
 });
 
-const profileForm = new PopupWithForm("#profile-edit-modal", (evt) => {
-  evt.preventDefault();
-  profileName.textContent = modalName.value;
-  profileSubtitle.textContent = modalSubtitle.value;
+const profileForm = new PopupWithForm("#profile-edit-modal", () => {
+  profileForm._getInputValues();
   profileForm.close();
 });
 profileForm.setEventListeners();
@@ -183,5 +148,10 @@ profileAddButton.addEventListener("click", () => {
   addCardForm.open();
 });
 
-const addCardForm = new PopupWithForm("#profile-add-modal", () => {});
+const addCardForm = new PopupWithForm("#profile-add-modal", () => {
+  addCardForm._getInputValues();
+  addCardForm.close();
+});
 addCardForm.setEventListeners();
+
+//* userInfo.js
