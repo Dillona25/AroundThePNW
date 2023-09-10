@@ -4,12 +4,14 @@ export default class Popup {
   }
 
   setEventListeners() {
-    if (
-      evt.target.classList.contains("modal") ||
-      evt.target.classList.contains("modal__close")
-    ) {
-      this.close();
-    }
+    this._popupElement.addEventListener("mousedown", (evt) => {
+      if (
+        evt.target.classList.contains("modal") ||
+        evt.target.classList.contains("modal__close")
+      ) {
+        this.close();
+      }
+    });
   }
 
   open() {

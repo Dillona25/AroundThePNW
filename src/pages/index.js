@@ -127,12 +127,12 @@ function renderCard(cardData) {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
-profileEditButton.addEventListener("click", () => {
-  modalName.value = profileName.textContent.trim();
-  modalSubtitle.value = profileSubtitle.textContent.trim();
-  editFormValidator.resetValidation();
-  openModal(profileEditModal);
-});
+// profileEditButton.addEventListener("click", () => {
+//   modalName.value = profileName.textContent.trim();
+//   modalSubtitle.value = profileSubtitle.textContent.trim();
+//   editFormValidator.resetValidation();
+//   openModal(profileEditModal);
+// });
 
 profileAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
@@ -178,8 +178,8 @@ cardSection.renderItems();
 
 //* popupWithImage.js
 
-const popupImage = new PopupWithImage(imageModal);
-popupImage.setEventListeners();
+// const popupImage = new PopupWithImage({ popupSelector: "#image-modal" });
+// popupImage.setEventListeners();
 
 //* popupWithForm.js : profile
 
