@@ -67,12 +67,6 @@ const cardLinkInput = document.querySelector(".modal__link");
 const modalImageElement = imageModal.querySelector(".modal__image");
 
 //* Modal Functions
-// function handleEscape(evt) {
-//   if (evt.key === "Escape") {
-//     const openPopup = document.querySelector(".modal_opened");
-//     closeModal(openPopup);
-//   }
-// }
 
 function handleCardClick(cardData) {
   modalImageElement.src = cardData.link;
