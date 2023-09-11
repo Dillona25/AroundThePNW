@@ -3,9 +3,9 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import UserInfo from "../components/UserInfo.js";
 import "./index.css";
 import { data } from "autoprefixer";
+import UserInfo from "../components/UserInfo.js";
 
 //* Arrays
 
@@ -125,7 +125,6 @@ profileEditButton.addEventListener("click", () => {
 });
 
 const profileForm = new PopupWithForm("#profile-edit-modal", () => {
-  profileForm._getInputValues();
   profileForm.close();
 });
 profileForm.setEventListeners();
@@ -137,10 +136,14 @@ profileAddButton.addEventListener("click", () => {
   addCardForm.open();
 });
 
-const addCardForm = new PopupWithForm("#profile-add-modal", () => {
-  addCardForm._getInputValues();
+const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
+  debugger;
+  cardSection.addItem(renderCard(inputValues));
   addCardForm.close();
 });
 addCardForm.setEventListeners();
 
 //* userInfo.js
+
+//! Create an instance of the UserInfo class in index.js. Use its method setUserInfo()
+//! to handle the form submission inside an instance of the PopupWithForm class.
