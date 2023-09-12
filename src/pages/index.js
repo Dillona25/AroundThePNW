@@ -96,6 +96,10 @@ const addFormValidator = new FormValidator(
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
+//* userInfo.js
+
+const userInfo = new UserInfo("#owner-name", "#owner-bio");
+
 //* Section.js
 
 const cardSection = new Section(
@@ -126,6 +130,7 @@ profileEditButton.addEventListener("click", () => {
 
 const profileForm = new PopupWithForm("#profile-edit-modal", () => {
   profileForm.close();
+  userInfo.setUserInfo();
 });
 profileForm.setEventListeners();
 
@@ -142,10 +147,3 @@ const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
   addCardForm.close();
 });
 addCardForm.setEventListeners();
-
-//* userInfo.js
-
-const UserProfileInfo = new UserInfo({
-  userNameElement: ".modal__name",
-  userJobElement: ".modal__bio",
-});
