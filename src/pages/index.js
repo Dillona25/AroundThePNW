@@ -145,5 +145,7 @@ addCardForm.setEventListeners();
 
 //* userInfo.js
 
-//! Create an instance of the UserInfo class in index.js. Use its method setUserInfo()
-//! to handle the form submission inside an instance of the PopupWithForm class.
+const UserProfileInfo = new UserInfo({
+  userNameElement: ".modal__name",
+  userJobElement: ".modal__bio",
+});
