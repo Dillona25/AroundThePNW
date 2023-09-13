@@ -36,35 +36,16 @@ const initialCards = [
   },
 ];
 
-//* Template
-
-const cardTemplate = document
-  .querySelector("#card-template")
-  .content.querySelector(".cards__content");
-
 ///* Wrappers
 
-const cardList = document.querySelector(".cards__list");
-const profileEditForm = document.querySelector("#modal-edit-form");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
-const profileAddForm = document.querySelector("#modal-form-add");
-const imageModal = document.querySelector("#image-modal");
 
 //* Buttons and other DOM nodes
 const profileEditButton = document.querySelector(".profile__edit-button");
-const modalCloseButton = profileEditModal.querySelector(".modal__close");
-const profileName = document.querySelector(".profile__content-name");
-const profileSubtitle = document.querySelector(".profile__content-subtitle");
 const modalName = document.querySelector(".modal__name");
 const modalSubtitle = document.querySelector(".modal__bio");
 const profileAddButton = document.querySelector(".profile__add-button");
-const imageModalCaption = document.querySelector(".modal__image-caption");
-
-//* Form Data
-const cardTitleInput = document.querySelector(".modal__add");
-const cardLinkInput = document.querySelector(".modal__link");
-const modalImageElement = imageModal.querySelector(".modal__image");
 
 //* Render Cards
 
@@ -82,6 +63,7 @@ const formValidatorOptions = {
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
 };
 
 const editFormValidator = new FormValidator(
@@ -130,7 +112,6 @@ profileEditButton.addEventListener("click", () => {
   const data = userInfo.getUserInfo();
   modalName.value = data.name;
   modalSubtitle.value = data.about;
-
   profileForm.open();
 });
 
