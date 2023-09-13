@@ -82,7 +82,6 @@ const formValidatorOptions = {
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
 };
 
 const editFormValidator = new FormValidator(
@@ -98,7 +97,10 @@ addFormValidator.enableValidation();
 
 //* userInfo.js
 
-const userInfo = new UserInfo("#owner-name", "#owner-bio");
+const userInfo = new UserInfo(
+  ".profile__content-name",
+  ".profile__content-subtitle"
+);
 
 //* Section.js
 
@@ -125,12 +127,16 @@ function handleCardClick(cardData) {
 //* popupWithForm.js: Edit profile
 
 profileEditButton.addEventListener("click", () => {
+  const data = userInfo.getUserInfo();
+  modalName.value = data.name;
+  modalSubtitle.value = data.about;
+
   profileForm.open();
 });
 
-const profileForm = new PopupWithForm("#profile-edit-modal", () => {
+const profileForm = new PopupWithForm("#profile-edit-modal", (data) => {
+  userInfo.setUserInfo(data.name, data.subtitle);
   profileForm.close();
-  userInfo.setUserInfo();
 });
 profileForm.setEventListeners();
 
