@@ -48,6 +48,13 @@ const modalName = document.querySelector(".modal__name");
 const modalSubtitle = document.querySelector(".modal__bio");
 const profileAddButton = document.querySelector(".profile__add-button");
 
+//* API
+
+const api = new Api("https://around-api.en.tripleten-services.com/v1", {
+  authorization: "7e84cba7-6af7-4727-bf28-6799c49e2b64",
+  "Content-Type": "application/json",
+});
+
 //* Render Cards
 
 function renderCard(cardData) {
@@ -86,6 +93,16 @@ const userInfo = new UserInfo(
 );
 
 //* Section.js
+
+Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
+  ([data, cards]) => {
+    userId = data._id;
+    userInfo.setUserInfo({
+      name: data.name,
+      about: data.about,
+    });
+  }
+);
 
 const cardSection = new Section(
   {
@@ -136,9 +153,4 @@ const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
 });
 addCardForm.setEventListeners();
 
-//* API
-
-const api = new Api("https://around-api.en.tripleten-services.com/v1", {
-  authorization: "e83633ae-db9d-4452-b87f-71623cefa287",
-  "Content-Type": "application/json",
-});
+// Todo: steps 3-9.
