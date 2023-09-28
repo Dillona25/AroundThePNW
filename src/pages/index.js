@@ -138,10 +138,7 @@ addCardForm.setEventListeners();
 
 //* API
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "e83633ae-db9d-4452-b87f-71623cefa287",
-    "Content-Type": "application/json",
-  },
+const api = new Api("https://around-api.en.tripleten-services.com/v1", {
+  authorization: "e83633ae-db9d-4452-b87f-71623cefa287",
+  "Content-Type": "application/json",
 });
