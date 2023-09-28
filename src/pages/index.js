@@ -6,6 +6,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import "./index.css";
 import { data } from "autoprefixer";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/API.js";
 
 //* Arrays
 
@@ -134,3 +135,13 @@ const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
   addCardForm.close();
 });
 addCardForm.setEventListeners();
+
+//* API
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "e83633ae-db9d-4452-b87f-71623cefa287",
+    "Content-Type": "application/json",
+  },
+});
