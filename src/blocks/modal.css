@@ -163,6 +163,10 @@
   position: absolute;
 }
 
+#modal-heading-confirm {
+  margin: 0;
+}
+
 @media screen and (max-width: 550px) {
   .modal__container {
     max-width: 282px;

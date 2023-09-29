@@ -29,7 +29,11 @@ export default class Api {
 
   deleteCard(cardId) {}
 
-  getUserInfo() {}
+  getUserInfo() {
+    return fetch(this._baseUrl + "/users/me", {
+      headers: this._headers,
+    }).then(this._handleServerResponse);
+  }
 
   editUserInfo(data) {
     return fetch(this._baseUrl + "/users/me", {

@@ -7,6 +7,7 @@ import "./index.css";
 import { data } from "autoprefixer";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/API.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 //* Arrays
 
@@ -126,7 +127,13 @@ const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
 });
 addCardForm.setEventListeners();
 
-// Todo: editProfile API
+//* popupWithConfirmation
+
+const confirmation = new PopupWithConfirmation({
+  popupSelector: "#confirmation-modal",
+});
+confirmation.setEventListeners();
+
 // Todo: Create a popup for deleting a card that popus when the user clicks the trash can.
 // Todo: Implement logic to delete the card from the server.
 // Todo: create a popup that allows the user to update their profile picture.
