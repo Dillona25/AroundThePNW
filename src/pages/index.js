@@ -103,6 +103,7 @@ profileEditButton.addEventListener("click", () => {
 
 const profileForm = new PopupWithForm("#profile-edit-modal", (data) => {
   api.editUserInfo(data).then((data) => {
+    console.log(data);
     userInfo.setUserInfo(data.name, data.about);
     profileForm.close();
   });
