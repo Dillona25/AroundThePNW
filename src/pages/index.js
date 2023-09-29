@@ -95,7 +95,7 @@ function handleCardClick(cardData) {
 //* popupWithForm.js: Edit profile
 
 profileEditButton.addEventListener("click", () => {
-  const data = userInfo.getUserInfo();
+  let data = userInfo.getUserInfo();
   modalName.value = data.name;
   modalSubtitle.value = data.about;
   profileForm.open();
@@ -125,4 +125,7 @@ const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
 });
 addCardForm.setEventListeners();
 
-// Todo: steps 3-9.
+// Todo: Create a popup for deleting a card that popus when the user clicks the trash can.
+// Todo: Implement logic to delete the card from the server.
+// Todo: create a popup that allows the user to update their profile picture.
+// Todo: Update the form UX and show "Saving" when a user submits a form.

@@ -27,27 +27,18 @@ export default class Api {
     }).then(this._handleServerResponse);
   }
 
-  deleteCard(cardId) {
-    return fetch(this._baseUrl + "/cards/" + cardId, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._handleServerResponse);
-  }
+  deleteCard(cardId) {}
 
-  getUserInfo() {
+  getUserInfo() {}
+
+  editUserInfo(data) {
     return fetch(this._baseUrl + "/users/me", {
+      method: "PATCH",
       headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        about: data.subtitle,
+      }),
     }).then(this._handleServerResponse);
   }
-
-  // editUserInfo(data) {
-  //   return fetch(this._baseUrl + "/users/me", {
-  //     method: "PATCH",
-  //     headers: this._headers,
-  //     body: JSON.stringify({
-  //       name: data.name,
-  //       about: data.about,
-  //     }),
-  //   }).then(this._handleServerResponse);
-  // }
 }
