@@ -33,12 +33,7 @@ export default class Api {
 
   editUserInfo(data) {
     return fetch(this._baseUrl + "/users/me", {
-      method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        name: data.name,
-        about: data.subtitle,
-      }),
     }).then(this._handleServerResponse);
   }
 }
