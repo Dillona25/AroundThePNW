@@ -27,6 +27,13 @@ export default class Api {
     }).then(this._handleServerResponse);
   }
 
+  deleteCard(cardId) {
+    return fetch(this._baseUrl + "/cards/" + cardId, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._handleServerResponse);
+  }
+
   getUserInfo() {
     return fetch(this._baseUrl + "/users/me", {
       headers: this._headers,
