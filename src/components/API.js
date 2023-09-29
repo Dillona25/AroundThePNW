@@ -16,20 +16,31 @@ export default class Api {
     }).then(this._handleServerResponse);
   }
 
+  addNewCard(data) {
+    return fetch(this._baseUrl + "/cards", {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link,
+      }),
+    }).then(this._handleServerResponse);
+  }
+
   getUserInfo() {
     return fetch(this._baseUrl + "/users/me", {
       headers: this._headers,
     }).then(this._handleServerResponse);
   }
 
-  editUserInfo(data) {
-    return fetch(this._baseUrl + "/users/me", {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        name: data.name,
-        about: data.about,
-      }),
-    }).then(this._handleServerResponse);
-  }
+  // editUserInfo(data) {
+  //   return fetch(this._baseUrl + "/users/me", {
+  //     method: "PATCH",
+  //     headers: this._headers,
+  //     body: JSON.stringify({
+  //       name: data.name,
+  //       about: data.about,
+  //     }),
+  //   }).then(this._handleServerResponse);
+  // }
 }

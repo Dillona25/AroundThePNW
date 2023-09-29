@@ -10,32 +10,32 @@ import Api from "../components/API.js";
 
 //* Arrays
 
-const initialCards = [
-  {
-    name: "Mt Hood",
-    link: "https://images.unsplash.com/photo-1663947718266-e5cfe7e95271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-  },
-  {
-    name: "Multnomah Falls",
-    link: "https://images.unsplash.com/photo-1657518860188-daa43c146ed8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-  },
-  {
-    name: "Diablo Lake",
-    link: "https://images.unsplash.com/photo-1521400259647-cec809312f3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
-  },
-  {
-    name: "Mt Rainier",
-    link: "https://images.unsplash.com/photo-1568226292321-dd67ff8b3b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
-  },
-  {
-    name: "Mt St Helens",
-    link: "https://images.unsplash.com/photo-1616684553557-82371dfba65f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80",
-  },
-  {
-    name: "Oregon Coast",
-    link: "https://images.unsplash.com/photo-1602966287996-dbdb3d69d36c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-  },
-];
+// const initialCards  = [
+//   {
+//     name: "Mt Hood",
+//     link: "https://images.unsplash.com/photo-1663947718266-e5cfe7e95271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+//   },
+//   {
+//     name: "Multnomah Falls",
+//     link: "https://images.unsplash.com/photo-1657518860188-daa43c146ed8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+//   },
+//   {
+//     name: "Diablo Lake",
+//     link: "https://images.unsplash.com/photo-1521400259647-cec809312f3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
+//   },
+//   {
+//     name: "Mt Rainier",
+//     link: "https://images.unsplash.com/photo-1568226292321-dd67ff8b3b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
+//   },
+//   {
+//     name: "Mt St Helens",
+//     link: "https://images.unsplash.com/photo-1616684553557-82371dfba65f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80",
+//   },
+//   {
+//     name: "Oregon Coast",
+//     link: "https://images.unsplash.com/photo-1602966287996-dbdb3d69d36c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+//   },
+// ];
 
 ///* Wrappers
 
@@ -93,9 +93,12 @@ const userInfo = new UserInfo(
 );
 
 //* Section.js
+let cardSection;
 
 Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
   ([data, cards]) => {
+    cardSection = new Section(...);
+    // call the renderItems 
     userId = data._id;
     userInfo.setUserInfo({
       name: data.name,
@@ -104,16 +107,16 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
   }
 );
 
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (cardData) => {
-      cardSection.addItem(renderCard(cardData));
-    },
-  },
-  "#card-list"
-);
-cardSection.renderItems();
+// const cardSection = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (cardData) => {
+//       cardSection.addItem(renderCard(cardData));
+//     },
+//   },
+//   "#card-list"
+// );
+// cardSection.renderItems(); 
 
 //* popupWithImage.js
 
@@ -134,8 +137,10 @@ profileEditButton.addEventListener("click", () => {
 });
 
 const profileForm = new PopupWithForm("#profile-edit-modal", (data) => {
-  userInfo.setUserInfo(data.name, data.subtitle);
-  profileForm.close();
+  api.editUserInfo(data).then((data) => {
+    userInfo.setUserInfo(data.name, data.about);
+    profileForm.close();
+  });
 });
 profileForm.setEventListeners();
 
@@ -147,9 +152,11 @@ profileAddButton.addEventListener("click", () => {
 });
 
 const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
-  debugger;
-  cardSection.addItem(renderCard(inputValues));
-  addCardForm.close();
+  api.addNewCard(inputValues).then((data) => {
+    console.log(data);
+    cardSection.addItem(renderCard(data));
+    addCardForm.close();
+  });
 });
 addCardForm.setEventListeners();
 
