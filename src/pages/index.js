@@ -126,6 +126,7 @@ const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
 });
 addCardForm.setEventListeners();
 
+// Todo: editProfile API
 // Todo: Create a popup for deleting a card that popus when the user clicks the trash can.
 // Todo: Implement logic to delete the card from the server.
 // Todo: create a popup that allows the user to update their profile picture.
