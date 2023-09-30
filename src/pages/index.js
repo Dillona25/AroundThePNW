@@ -32,7 +32,12 @@ const api = new Api("https://around-api.en.tripleten-services.com/v1", {
 //* Render Cards
 
 function renderCard(cardData) {
-  return new Card(cardData, handleCardClick, "#card-template").getCard();
+  return new Card(
+    cardData,
+    handleCardClick,
+    "#card-template",
+    handleDelete
+  ).getCard();
 }
 
 //* FormValidator.js logic
@@ -133,6 +138,17 @@ const confirmation = new PopupWithConfirmation({
   popupSelector: "#confirmation-modal",
 });
 confirmation.setEventListeners();
+
+function handleDelete(card) {
+  //open modal
+  //setsubmitaction
+  confirmation.confirmDelete(() => {
+    api.deleteCard(card.cardId).then(() => {
+      card.handleDeleteIcon();
+      confirmation.close();
+    });
+  });
+}
 
 // Todo: Create a popup for deleting a card that popus when the user clicks the trash can.
 // Todo: Implement logic to delete the card from the server.
