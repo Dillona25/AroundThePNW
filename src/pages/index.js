@@ -140,8 +140,12 @@ const confirmation = new PopupWithConfirmation({
 confirmation.setEventListeners();
 
 function handleDelete(card) {
-  //open modal
-  //setsubmitaction
+  const confirmationModal = document.querySelector("#confirmation-modal");
+  const trashBtn = document.querySelector(".cards__delete");
+  trashBtn.addEventListener("click", () => {
+    confirmationModal.open();
+  });
+
   confirmation.confirmDelete(() => {
     api.deleteCard(card.cardId).then(() => {
       card.handleDeleteIcon();
