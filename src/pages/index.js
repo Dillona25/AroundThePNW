@@ -140,6 +140,7 @@ const confirmation = new PopupWithConfirmation({
 confirmation.setEventListeners();
 
 function handleDelete(card) {
+  confirmation.open();
   confirmation.confirmDelete(() => {
     api.deleteCard(card.cardId).then(() => {
       card.handleDeleteCard();

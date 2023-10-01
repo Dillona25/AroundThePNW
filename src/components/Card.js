@@ -17,7 +17,7 @@ export default class Card {
     this._cardElement
       .querySelector(".cards__delete")
       .addEventListener("click", () => {
-        this.handleDeleteCard(this);
+        this._handleDeleteCard(this);
       });
 
     this._cardImageElement.addEventListener("click", () =>
