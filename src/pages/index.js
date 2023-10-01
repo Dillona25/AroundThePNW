@@ -145,6 +145,7 @@ function handleDelete(card) {
   trashBtn.addEventListener("click", () => {
     confirmationModal.open();
   });
+  confirmationModal.setEventListeners();
 
   confirmation.confirmDelete(() => {
     api.deleteCard(card.cardId).then(() => {

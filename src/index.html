@@ -134,6 +134,30 @@
       </div>
     </div>
 
+    <!-- update profile photo modal -->
+    <div class="modal modal_opened" id="profile-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <form class="modal__form">
+          <h1 class="modal__heading" id="modal-heading-avatar">
+            Change profile picture
+          </h1>
+          <input
+            type="url"
+            id="modal-profile-link"
+            name="link"
+            class="modal__input modal__profile_link"
+            placeholder="Image link"
+            class="modal__input"
+          />
+          <span class="modal__error" id="modal-profile-link-error"></span>
+          <button class="modal__button" id="modal-profile-submit" type="submit">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Cards template -->
     <template id="card-template">
       <li class="cards__content" id="card-list">
