@@ -140,20 +140,14 @@ const confirmation = new PopupWithConfirmation({
 confirmation.setEventListeners();
 
 function handleDelete(card) {
-  const confirmationModal = document.querySelector("#confirmation-modal");
-  const trashBtn = document.querySelector(".cards__delete");
-  trashBtn.addEventListener("click", () => {
-    confirmationModal.open();
-  });
-  confirmationModal.setEventListeners();
-
   confirmation.confirmDelete(() => {
     api.deleteCard(card.cardId).then(() => {
-      card.handleDeleteIcon();
+      card.handleDeleteCard();
       confirmation.close();
     });
   });
 }
+confirmation.setEventListeners();
 
 // Todo: Create a popup for deleting a card that popus when the user clicks the trash can.
 // Todo: Implement logic to delete the card from the server.
