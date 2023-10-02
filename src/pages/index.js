@@ -36,13 +36,10 @@ function renderCard(cardData) {
     cardData,
     handleCardClick,
     "#card-template",
-    handleDelete
+    handleDelete,
+    handleLike
   ).getCard();
 }
-
-//* like card
-
-function handleLike() {}
 
 //* FormValidator.js logic
 
@@ -92,6 +89,26 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
     cardSection.renderItems();
   }
 );
+
+//* Like card
+
+function handleLike(card) {
+  if (card.isLiked()) {
+    api
+      .removeLikes(card.cardId)
+      .then((res) => {
+        card.showLikes(res.likes);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    api
+      .addLikes(card.cardId)
+      .then((res) => {
+        card.showLikes(res.likes);
+      })
+      .catch((err) => console.log(err));
+  }
+}
 
 //* popupWithImage.js
 
