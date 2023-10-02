@@ -155,8 +155,6 @@ function handleDelete(card) {
       .catch((err) => console.log(err));
   });
 }
-confirmation.setEventListeners();
 
-// Todo: Implement logic to delete the card from the server.
 // Todo: create a popup that allows the user to update their profile picture.
 // Todo: Update the form UX and show "Saving" when a user submits a form.
