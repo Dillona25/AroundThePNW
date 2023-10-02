@@ -40,6 +40,10 @@ function renderCard(cardData) {
   ).getCard();
 }
 
+//* like card
+
+function handleLike() {}
+
 //* FormValidator.js logic
 
 const editFormElement = profileEditModal.querySelector("#modal-edit-form");
@@ -142,15 +146,17 @@ confirmation.setEventListeners();
 function handleDelete(card) {
   confirmation.open();
   confirmation.confirmDelete(() => {
-    api.deleteCard(card.cardId).then(() => {
-      card.handleDeleteCard();
-      confirmation.close();
-    });
+    api
+      .deleteCard(card.cardId)
+      .then(() => {
+        confirmation.close();
+        card.handleDeleteCard();
+      })
+      .catch((err) => console.log(err));
   });
 }
 confirmation.setEventListeners();
 
-// Todo: Create a popup for deleting a card that popus when the user clicks the trash can.
 // Todo: Implement logic to delete the card from the server.
 // Todo: create a popup that allows the user to update their profile picture.
 // Todo: Update the form UX and show "Saving" when a user submits a form.
