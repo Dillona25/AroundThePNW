@@ -150,7 +150,7 @@ function handleDelete(card) {
       .deleteCard(card.cardId)
       .then(() => {
         confirmation.close();
-        card.handleDeleteCard();
+        card.removeCard();
       })
       .catch((err) => console.log(err));
   });
