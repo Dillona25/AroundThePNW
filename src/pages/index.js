@@ -28,7 +28,8 @@ const api = new Api("https://around-api.en.tripleten-services.com/v1", {
 
 const userInfo = new UserInfo(
   ".profile__content-name",
-  ".profile__content-subtitle"
+  ".profile__content-subtitle",
+  ".profile__image"
 );
 
 //* ==========================================
@@ -83,6 +84,7 @@ editAvatarValidator.enableValidation();
 //* ==========================================
 
 let cardSection;
+let userId;
 Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
   ([data, cards]) => {
     cardSection = new Section(
