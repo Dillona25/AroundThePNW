@@ -23,11 +23,14 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img
-            src="<%=require('./images/Avatar.png')%>"
-            alt="profile image"
-            class="profile__image"
-          />
+          <div class="profile__image-container">
+            <img
+              src="<%=require('./images/Avatar.png')%>"
+              alt="profile image"
+              class="profile__image"
+            />
+            <button class="profile__image-edit"></button>
+          </div>
           <div class="profile__content">
             <h1 class="profile__content-name">Jacques Cousteau</h1>
             <button type="button" class="profile__edit-button"></button>
