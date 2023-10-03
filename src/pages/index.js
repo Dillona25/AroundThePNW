@@ -9,28 +9,31 @@ import UserInfo from "../components/UserInfo.js";
 import Api from "../components/API.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
-//* Arrays
-
-///* Wrappers
+//* ==========================================
+//*              constants
+//* ==========================================
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
 const editAvatarModal = document.querySelector("#profile-avatar-modal");
-
-//* Buttons and other DOM nodes
 const profileEditButton = document.querySelector(".profile__edit-button");
 const modalName = document.querySelector(".modal__name");
 const modalSubtitle = document.querySelector(".modal__bio");
 const profileAddButton = document.querySelector(".profile__add-button");
-
-//* API
 
 const api = new Api("https://around-api.en.tripleten-services.com/v1", {
   authorization: "7e84cba7-6af7-4727-bf28-6799c49e2b64",
   "Content-Type": "application/json",
 });
 
-//* Render Cards
+const userInfo = new UserInfo(
+  ".profile__content-name",
+  ".profile__content-subtitle"
+);
+
+//* ==========================================
+//*              Render Cards
+//* ==========================================
 
 function renderCard(cardData) {
   return new Card(
@@ -41,11 +44,9 @@ function renderCard(cardData) {
   ).getCard();
 }
 
-//* ==================================
-//* Like card
-//* ==================================
-
-//* FormValidator.js logic
+//* ==========================================
+//*             Form Validation
+//* ==========================================
 
 const editFormElement = profileEditModal.querySelector("#modal-edit-form");
 const addFormElement = profileAddModal.querySelector("#modal-form-add");
@@ -77,16 +78,11 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 editAvatarValidator.enableValidation();
 
-//* userInfo.js
+//* ==========================================
+//*        Section class and Promise
+//* ==========================================
 
-const userInfo = new UserInfo(
-  ".profile__content-name",
-  ".profile__content-subtitle"
-);
-
-//* Section.js
 let cardSection;
-
 Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
   ([data, cards]) => {
     cardSection = new Section(
@@ -102,7 +98,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
   }
 );
 
-//* Edit Avatar
+//* ==========================================
+//*           Editing Avatar Image
+//* ==========================================
 
 const editAvatarForm = new PopupWithForm("#profile-avatar-modal", (data) => {
   editAvatarForm.setSubmitText(true);
@@ -124,7 +122,9 @@ avatarButton.addEventListener("click", () => {
   editAvatarForm.open();
 });
 
-//* popupWithImage.js
+//* ==========================================
+//*          PopupWithImage Class
+//* ==========================================
 
 const popupImage = new PopupWithImage({ popupSelector: "#image-modal" });
 popupImage.setEventListeners();
@@ -133,7 +133,9 @@ function handleCardClick(cardData) {
   popupImage.open(cardData);
 }
 
-//* popupWithForm.js: Edit profile
+//* ==========================================
+//*       PopupWithForm: Edit profile
+//* ==========================================
 
 profileEditButton.addEventListener("click", () => {
   let data = userInfo.getUserInfo();
@@ -154,7 +156,9 @@ const profileForm = new PopupWithForm("#profile-edit-modal", (data) => {
 });
 profileForm.setEventListeners();
 
-//* popupWuthForm: Add Card
+//* ==========================================
+//*        PopupWithForm: Add Card
+//* ==========================================
 
 profileAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
@@ -173,7 +177,9 @@ const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
 });
 addCardForm.setEventListeners();
 
-//* popupWithConfirmation
+//* ==========================================
+//*     PopupWithForm: Delete Confirmation
+//* ==========================================
 
 const confirmation = new PopupWithConfirmation({
   popupSelector: "#confirmation-modal",
