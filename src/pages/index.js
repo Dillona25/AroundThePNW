@@ -40,6 +40,10 @@ function renderCard(cardData) {
   ).getCard();
 }
 
+//* ==================================
+//* Like card
+//* ==================================
+
 //* FormValidator.js logic
 
 const editFormElement = profileEditModal.querySelector("#modal-edit-form");
