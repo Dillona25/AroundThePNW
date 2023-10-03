@@ -36,8 +36,7 @@ function renderCard(cardData) {
     cardData,
     handleCardClick,
     "#card-template",
-    handleDelete,
-    handleLike
+    handleDelete
   ).getCard();
 }
 
@@ -90,26 +89,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
   }
 );
 
-//* Like card
-
-function handleLike(card) {
-  if (card.isLiked()) {
-    api
-      .removeLikes(card.cardId)
-      .then((res) => {
-        card.showLikes(res.likes);
-      })
-      .catch((err) => console.log(err));
-  } else {
-    api
-      .addLikes(card.cardId)
-      .then((res) => {
-        card.showLikes(res.likes);
-      })
-      .catch((err) => console.log(err));
-  }
-}
-
 //* popupWithImage.js
 
 const popupImage = new PopupWithImage({ popupSelector: "#image-modal" });
@@ -129,11 +108,14 @@ profileEditButton.addEventListener("click", () => {
 });
 
 const profileForm = new PopupWithForm("#profile-edit-modal", (data) => {
-  api.editUserInfo(data).then((data) => {
-    console.log(data);
-    userInfo.setUserInfo(data.name, data.about);
-    profileForm.close();
-  });
+  profileForm.setSubmitText(true);
+  api
+    .editUserInfo(data)
+    .then((data) => {
+      userInfo.setUserInfo(data.name, data.about);
+      profileForm.close();
+    })
+    .finally(() => profileForm.setSubmitText(false));
 });
 profileForm.setEventListeners();
 
@@ -145,11 +127,14 @@ profileAddButton.addEventListener("click", () => {
 });
 
 const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
-  api.addNewCard(inputValues).then((data) => {
-    console.log(data);
-    cardSection.addItem(renderCard(data));
-    addCardForm.close();
-  });
+  addCardForm.setSubmitText(true);
+  api
+    .addNewCard(inputValues)
+    .then((data) => {
+      cardSection.addItem(renderCard(data));
+      addCardForm.close();
+    })
+    .finally(() => addCardForm.setSubmitText(false));
 });
 addCardForm.setEventListeners();
 
@@ -162,15 +147,18 @@ confirmation.setEventListeners();
 
 function handleDelete(card) {
   confirmation.open();
-  confirmation.confirmDelete(() => {
-    api
-      .deleteCard(card.cardId)
-      .then(() => {
-        confirmation.close();
-        card.removeCard();
-      })
-      .catch((err) => console.log(err));
-  });
+  confirmation
+    .confirmDelete(() => {
+      confirmation.setSubmitText(true, "Deleting...");
+      api
+        .deleteCard(card.cardId)
+        .then(() => {
+          confirmation.close();
+          card.removeCard();
+        })
+        .catch((err) => console.log(err));
+    })
+    .finally(() => confirmation.setSubmitText(false));
 }
 
 // Todo: create a popup that allows the user to update their profile picture.
