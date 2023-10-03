@@ -11,7 +11,7 @@
 }
 
 .profile__image-container:hover .profile__image {
-  opacity: 80%;
+  opacity: 40%;
   transition: 0.3s ease;
 }
 

@@ -15,6 +15,7 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
+const editAvatarModal = document.querySelector("#profile-avatar-modal");
 
 //* Buttons and other DOM nodes
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -48,6 +49,7 @@ function renderCard(cardData) {
 
 const editFormElement = profileEditModal.querySelector("#modal-edit-form");
 const addFormElement = profileAddModal.querySelector("#modal-form-add");
+const editAvatarElement = editAvatarModal.querySelector(".modal__form");
 
 const formValidatorOptions = {
   inputSelector: ".modal__input",
@@ -65,8 +67,15 @@ const addFormValidator = new FormValidator(
   formValidatorOptions,
   addFormElement
 );
+
+const editAvatarValidator = new FormValidator(
+  formValidatorOptions,
+  editAvatarElement
+);
+
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+editAvatarValidator.enableValidation();
 
 //* userInfo.js
 
@@ -92,6 +101,28 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
     cardSection.renderItems();
   }
 );
+
+//* Edit Avatar
+
+const editAvatarForm = new PopupWithForm("#profile-avatar-modal", (data) => {
+  editAvatarForm.setSubmitText(true);
+  api
+    .editAvatar(data)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      editAvatarForm.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => editAvatarForm.setSubmitText(false));
+});
+
+editAvatarForm.setEventListeners();
+
+const avatarButton = document.querySelector(".profile__image-edit");
+avatarButton.addEventListener("click", () => {
+  editAvatarValidator.resetValidation();
+  editAvatarForm.open();
+});
 
 //* popupWithImage.js
 
@@ -164,6 +195,3 @@ function handleDelete(card) {
     })
     .finally(() => confirmation.setSubmitText(false));
 }
-
-// Todo: create a popup that allows the user to update their profile picture.
-// Todo: Update the form UX and show "Saving" when a user submits a form.
