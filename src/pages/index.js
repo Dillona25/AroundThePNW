@@ -104,18 +104,17 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
 //*           Editing Avatar Image
 //* ==========================================
 
-const editAvatarForm = new PopupWithForm("#profile-avatar-modal", (data) => {
+const editAvatarForm = new PopupWithForm("#profile-avatar-modal", (avatar) => {
   editAvatarForm.setSubmitText(true);
   api
-    .editAvatar(data)
-    .then((data) => {
-      userInfo.setUserInfo(data);
+    .editAvatar(avatar)
+    .then((avatar) => {
+      userInfo.setUserAvatar(avatar);
       editAvatarForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => editAvatarForm.setSubmitText(false));
 });
-
 editAvatarForm.setEventListeners();
 
 const avatarButton = document.querySelector(".profile__image-edit");
