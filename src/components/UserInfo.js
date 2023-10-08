@@ -22,8 +22,6 @@ export default class UserInfo {
   }
 
   setUserAvatar(avatar) {
-    if (avatar) {
-      this._userAvatar.src = avatar;
-    }
+    this._userAvatar.src = avatar;
   }
 }

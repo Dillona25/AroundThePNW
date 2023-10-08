@@ -41,9 +41,16 @@ function renderCard(cardData) {
     cardData,
     handleCardClick,
     "#card-template",
-    handleDelete
+    handleDelete,
+    handleLikeButton
   ).getCard();
 }
+
+//* ==========================================
+//*               Liking cards
+//* ==========================================
+
+function handleLikeButton(card) {}
 
 //* ==========================================
 //*             Form Validation
@@ -108,8 +115,8 @@ const editAvatarForm = new PopupWithForm("#profile-avatar-modal", (avatar) => {
   editAvatarForm.setSubmitText(true);
   api
     .editAvatar(avatar)
-    .then((avatar) => {
-      userInfo.setUserAvatar(avatar);
+    .then((userData) => {
+      userInfo.setUserAvatar(userData.avatar);
       editAvatarForm.close();
     })
     .catch((err) => console.log(err))
