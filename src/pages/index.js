@@ -94,6 +94,8 @@ let cardSection;
 let userId;
 Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
   ([data, cards]) => {
+    userInfo.setUserInfo(data.name, data.about);
+    userInfo.setUserAvatar(data.avatar);
     cardSection = new Section(
       {
         items: cards,

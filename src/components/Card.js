@@ -36,7 +36,7 @@ export default class Card {
 
   setLikeStatus(isLiked) {
     this.isLiked = isLiked;
-    this._renderLikes();
+    this._handleLikeIcon();
   }
 
   _handleLikeIcon() {
