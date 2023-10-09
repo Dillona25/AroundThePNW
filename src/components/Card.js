@@ -34,6 +34,10 @@ export default class Card {
     );
   }
 
+  isLiked() {
+    return this._likes.find(({ _id }) => this._userId === _id);
+  }
+
   setLikeStatus(isLiked) {
     this.isLiked = isLiked;
     this._handleLikeIcon();
