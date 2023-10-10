@@ -50,23 +50,7 @@ function renderCard(cardData) {
 //*               Liking cards
 //* ==========================================
 
-function handleLikeButton(card) {
-  if (card.isLiked()) {
-    api
-      .removeLike(card.id)
-      .then((res) => {
-        card.updateLikes(res.likes);
-      })
-      .catch((err) => console.log(err));
-  } else {
-    api
-      .addLike(card.id)
-      .then((res) => {
-        card.updateLikes(res.likes);
-      })
-      .catch((err) => console.log(err));
-  }
-}
+function handleLikeButton(card) {}
 
 //* ==========================================
 //*             Form Validation
