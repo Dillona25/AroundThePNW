@@ -20,7 +20,7 @@ export default class Card {
     this._cardElement
       .querySelector(".cards__like-button")
       .addEventListener("click", () => {
-        this._handleLikeCard(this.cardId, this._isLiked);
+        this._handleLikeCard(this);
       });
 
     this._cardElement
@@ -40,9 +40,11 @@ export default class Card {
   }
 
   _renderLikes() {
-    // Check if card is currently liked
-    //   If true add the liked class
-    //     If false, remove the like class
+    if (this._isLiked) {
+      this._likeButton.classList.add("cards__like-button_active");
+    } else {
+      this._likeButton.classList.remove("cards__like-button_active");
+    }
   }
 
   getId() {
