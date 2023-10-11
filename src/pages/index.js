@@ -51,12 +51,21 @@ function renderCard(cardData) {
 //* ==========================================
 
 function handleLikeButton(card) {
-  // Get access to whether the card is liked  and the card Id
-  // Check if the card is liked
-  //  If true, call the API addLike method
-  //   After reponse, update the card class instance with the new value of the isLiked property
-  // If false, call the API delete method
-  //  After reponse, update the card class instance with the new value of the isLiked property
+  if (card.isLiked) {
+    api
+      .removeLikes(card.cardId)
+      .then((res) => {
+        card.setLikeStatus(res.isLiked);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    api
+      .addLikes(card.cardId)
+      .then((res) => {
+        card.setLikeStatus(res.isLiked);
+      })
+      .catch((err) => console.log(err));
+  }
 }
 
 //* ==========================================
