@@ -9,7 +9,7 @@ export default class Card {
     this._name = name;
     this._link = link;
     this.cardId = _id;
-    this._isLiked = isLiked;
+    this.isLiked = isLiked;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
@@ -35,12 +35,12 @@ export default class Card {
   }
 
   setLikeStatus(isLiked) {
-    this._isLiked = isLiked;
+    this.isLiked = isLiked;
     this._renderLikes();
   }
 
   _renderLikes() {
-    if (this._isLiked) {
+    if (this.isLiked) {
       this._likeButton.classList.add("cards__like-button_active");
     } else {
       this._likeButton.classList.remove("cards__like-button_active");
