@@ -131,6 +131,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
 const avatarButton = document.querySelector(".profile__image-edit");
 avatarButton.addEventListener("click", () => {
   editAvatarValidator.resetValidation();
+  editAvatarValidator.disableButton();
   editAvatarForm.open();
 });
 
@@ -213,16 +214,15 @@ confirmation.setEventListeners();
 
 function handleDelete(card) {
   confirmation.open();
-  confirmation
-    .confirmDelete(() => {
-      confirmation.setSubmitText(true, "Deleting...");
-      api
-        .deleteCard(card.cardId)
-        .then(() => {
-          confirmation.close();
-          card.removeCard();
-        })
-        .catch((err) => console.log(err));
-    })
-    .finally(() => confirmation.setSubmitText(false));
+  confirmation.confirmDelete(() => {
+    confirmation.setSubmitText(true, "Deleting...");
+    api
+      .deleteCard(card.cardId)
+      .then(() => {
+        confirmation.close();
+        card.removeCard();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => confirmation.setSubmitText(false));
+  });
 }
