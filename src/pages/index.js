@@ -74,7 +74,7 @@ function handleLikeButton(card) {
 
 const editFormElement = profileEditModal.querySelector("#modal-edit-form");
 const addFormElement = profileAddModal.querySelector("#modal-form-add");
-const editAvatarElement = editAvatarModal.querySelector(".modal__form");
+const editAvatarElement = editAvatarModal.querySelector("#modal__form_avatar");
 
 const formValidatorOptions = {
   inputSelector: ".modal__input",
@@ -107,7 +107,6 @@ editAvatarValidator.enableValidation();
 //* ==========================================
 
 let cardSection;
-let userId;
 Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
   ([data, cards]) => {
     userInfo.setUserInfo(data.name, data.about);
@@ -129,6 +128,12 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
 //*           Editing Avatar Image
 //* ==========================================
 
+const avatarButton = document.querySelector(".profile__image-edit");
+avatarButton.addEventListener("click", () => {
+  editAvatarValidator.resetValidation();
+  editAvatarForm.open();
+});
+
 const editAvatarForm = new PopupWithForm("#profile-avatar-modal", (avatar) => {
   editAvatarForm.setSubmitText(true);
   api
@@ -141,12 +146,6 @@ const editAvatarForm = new PopupWithForm("#profile-avatar-modal", (avatar) => {
     .finally(() => editAvatarForm.setSubmitText(false));
 });
 editAvatarForm.setEventListeners();
-
-const avatarButton = document.querySelector(".profile__image-edit");
-avatarButton.addEventListener("click", () => {
-  editAvatarValidator.resetValidation();
-  editAvatarForm.open();
-});
 
 //* ==========================================
 //*          PopupWithImage Class
@@ -164,7 +163,7 @@ function handleCardClick(cardData) {
 //* ==========================================
 
 profileEditButton.addEventListener("click", () => {
-  let data = userInfo.getUserInfo();
+  const data = userInfo.getUserInfo();
   modalName.value = data.name;
   modalSubtitle.value = data.about;
   profileForm.open();
