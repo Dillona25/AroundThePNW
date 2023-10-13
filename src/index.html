@@ -23,11 +23,14 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img
-            src="<%=require('./images/Avatar.png')%>"
-            alt="profile image"
-            class="profile__image"
-          />
+          <div class="profile__image-container">
+            <img
+              src="<%=require('./images/Avatar.png')%>"
+              alt="profile image"
+              class="profile__image"
+            />
+            <button class="profile__image-edit"></button>
+          </div>
           <div class="profile__content">
             <h1 class="profile__content-name">Jacques Cousteau</h1>
             <button type="button" class="profile__edit-button"></button>
@@ -116,6 +119,46 @@
         <img class="modal__image" src="#" alt="location image" />
         <button class="modal__close"></button>
         <p class="modal__image-caption"></p>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmation-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <form class="modal__form">
+          <h1 class="modal__heading" id="modal-heading-confirm">
+            Are you sure?
+          </h1>
+          <button class="modal__button" type="submit" id="modal-confirm-submit">
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- update profile photo modal -->
+    <div class="modal" id="profile-avatar-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <form class="modal__form" id="modal__form_avatar">
+          <h1 class="modal__heading" id="modal-heading-avatar">
+            Change profile picture
+          </h1>
+          <input
+            type="url"
+            id="modal-profile-link"
+            name="link"
+            class="modal__input modal__profile_link"
+            placeholder="Image link"
+            class="modal__input"
+            required
+          />
+          <span class="modal__error" id="modal-profile-link-error"></span>
+          <button class="modal__button" id="modal-profile-submit" type="submit">
+            Save
+          </button>
+        </form>
       </div>
     </div>
 

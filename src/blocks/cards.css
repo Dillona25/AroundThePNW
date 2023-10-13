@@ -51,6 +51,7 @@
 
 .cards__description {
   display: flex;
+  align-items: center;
 }
 
 .cards__description-text {
@@ -87,6 +88,22 @@
 
 .cards__like-button_active {
   background-image: url(../images/Filled\ like\ heart.svg);
+}
+
+.cards__like-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0;
+}
+
+.cards__like-counter {
+  text-align: center;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000;
+  font-weight: normal;
+  margin: 0;
 }
 
 @media screen and (max-width: 618px) {

@@ -6,57 +6,75 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import "./index.css";
 import { data } from "autoprefixer";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/API.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
-//* Arrays
-
-const initialCards = [
-  {
-    name: "Mt Hood",
-    link: "https://images.unsplash.com/photo-1663947718266-e5cfe7e95271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-  },
-  {
-    name: "Multnomah Falls",
-    link: "https://images.unsplash.com/photo-1657518860188-daa43c146ed8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-  },
-  {
-    name: "Diablo Lake",
-    link: "https://images.unsplash.com/photo-1521400259647-cec809312f3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
-  },
-  {
-    name: "Mt Rainier",
-    link: "https://images.unsplash.com/photo-1568226292321-dd67ff8b3b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
-  },
-  {
-    name: "Mt St Helens",
-    link: "https://images.unsplash.com/photo-1616684553557-82371dfba65f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80",
-  },
-  {
-    name: "Oregon Coast",
-    link: "https://images.unsplash.com/photo-1602966287996-dbdb3d69d36c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-  },
-];
-
-///* Wrappers
+//* ==========================================
+//*              constants
+//* ==========================================
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
-
-//* Buttons and other DOM nodes
+const editAvatarModal = document.querySelector("#profile-avatar-modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const modalName = document.querySelector(".modal__name");
 const modalSubtitle = document.querySelector(".modal__bio");
 const profileAddButton = document.querySelector(".profile__add-button");
 
-//* Render Cards
+const api = new Api("https://around-api.en.tripleten-services.com/v1", {
+  authorization: "7e84cba7-6af7-4727-bf28-6799c49e2b64",
+  "Content-Type": "application/json",
+});
+
+const userInfo = new UserInfo(
+  ".profile__content-name",
+  ".profile__content-subtitle",
+  ".profile__image"
+);
+
+//* ==========================================
+//*              Render Cards
+//* ==========================================
 
 function renderCard(cardData) {
-  return new Card(cardData, handleCardClick, "#card-template").getCard();
+  return new Card(
+    cardData,
+    handleCardClick,
+    "#card-template",
+    handleDelete,
+    handleLikeButton
+  ).getCard();
 }
 
-//* FormValidator.js logic
+//* ==========================================
+//*               Liking cards
+//* ==========================================
+
+function handleLikeButton(card) {
+  if (card.isLiked) {
+    api
+      .removeLikes(card.cardId)
+      .then((res) => {
+        card.setLikeStatus(res.isLiked);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    api
+      .addLikes(card.cardId)
+      .then((res) => {
+        card.setLikeStatus(res.isLiked);
+      })
+      .catch((err) => console.log(err));
+  }
+}
+
+//* ==========================================
+//*             Form Validation
+//* ==========================================
 
 const editFormElement = profileEditModal.querySelector("#modal-edit-form");
 const addFormElement = profileAddModal.querySelector("#modal-form-add");
+const editAvatarElement = editAvatarModal.querySelector("#modal__form_avatar");
 
 const formValidatorOptions = {
   inputSelector: ".modal__input",
@@ -74,30 +92,64 @@ const addFormValidator = new FormValidator(
   formValidatorOptions,
   addFormElement
 );
+
+const editAvatarValidator = new FormValidator(
+  formValidatorOptions,
+  editAvatarElement
+);
+
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+editAvatarValidator.enableValidation();
 
-//* userInfo.js
+//* ==========================================
+//*        Section class and Promise
+//* ==========================================
 
-const userInfo = new UserInfo(
-  ".profile__content-name",
-  ".profile__content-subtitle"
+let cardSection;
+Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
+  ([data, cards]) => {
+    userInfo.setUserInfo(data.name, data.about);
+    userInfo.setUserAvatar(data.avatar);
+    cardSection = new Section(
+      {
+        items: cards,
+        renderer: (cardData) => {
+          cardSection.addItem(renderCard(cardData));
+        },
+      },
+      "#card-list"
+    );
+    cardSection.renderItems();
+  }
 );
 
-//* Section.js
+//* ==========================================
+//*           Editing Avatar Image
+//* ==========================================
 
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (cardData) => {
-      cardSection.addItem(renderCard(cardData));
-    },
-  },
-  "#card-list"
-);
-cardSection.renderItems();
+const avatarButton = document.querySelector(".profile__image-edit");
+avatarButton.addEventListener("click", () => {
+  editAvatarValidator.resetValidation();
+  editAvatarForm.open();
+});
 
-//* popupWithImage.js
+const editAvatarForm = new PopupWithForm("#profile-avatar-modal", (avatar) => {
+  editAvatarForm.setSubmitText(true);
+  api
+    .editAvatar(avatar)
+    .then((userData) => {
+      userInfo.setUserAvatar(userData.avatar);
+      editAvatarForm.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => editAvatarForm.setSubmitText(false));
+});
+editAvatarForm.setEventListeners();
+
+//* ==========================================
+//*          PopupWithImage Class
+//* ==========================================
 
 const popupImage = new PopupWithImage({ popupSelector: "#image-modal" });
 popupImage.setEventListeners();
@@ -106,7 +158,9 @@ function handleCardClick(cardData) {
   popupImage.open(cardData);
 }
 
-//* popupWithForm.js: Edit profile
+//* ==========================================
+//*       PopupWithForm: Edit profile
+//* ==========================================
 
 profileEditButton.addEventListener("click", () => {
   const data = userInfo.getUserInfo();
@@ -116,12 +170,20 @@ profileEditButton.addEventListener("click", () => {
 });
 
 const profileForm = new PopupWithForm("#profile-edit-modal", (data) => {
-  userInfo.setUserInfo(data.name, data.subtitle);
-  profileForm.close();
+  profileForm.setSubmitText(true);
+  api
+    .editUserInfo(data)
+    .then((data) => {
+      userInfo.setUserInfo(data.name, data.about);
+      profileForm.close();
+    })
+    .finally(() => profileForm.setSubmitText(false));
 });
 profileForm.setEventListeners();
 
-//* popupWuthForm: Add Card
+//* ==========================================
+//*        PopupWithForm: Add Card
+//* ==========================================
 
 profileAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
@@ -129,8 +191,37 @@ profileAddButton.addEventListener("click", () => {
 });
 
 const addCardForm = new PopupWithForm("#profile-add-modal", (inputValues) => {
-  debugger;
-  cardSection.addItem(renderCard(inputValues));
-  addCardForm.close();
+  addCardForm.setSubmitText(true);
+  api
+    .addNewCard(inputValues)
+    .then((data) => {
+      cardSection.addItem(renderCard(data));
+      addCardForm.close();
+    })
+    .finally(() => addCardForm.setSubmitText(false));
 });
 addCardForm.setEventListeners();
+
+//* ==========================================
+//*     PopupWithForm: Delete Confirmation
+//* ==========================================
+
+const confirmation = new PopupWithConfirmation({
+  popupSelector: "#confirmation-modal",
+});
+confirmation.setEventListeners();
+
+function handleDelete(card) {
+  confirmation.open();
+  confirmation.confirmDelete(() => {
+    confirmation.setSubmitText(true, "Deleting...");
+    api
+      .deleteCard(card.cardId)
+      .then(() => {
+        confirmation.close();
+        card.removeCard();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => confirmation.setSubmitText(false));
+  });
+}
