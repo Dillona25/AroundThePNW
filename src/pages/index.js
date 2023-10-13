@@ -131,7 +131,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
 const avatarButton = document.querySelector(".profile__image-edit");
 avatarButton.addEventListener("click", () => {
   editAvatarValidator.resetValidation();
-  editAvatarValidator.disableButton();
   editAvatarForm.open();
 });
 
