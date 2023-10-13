@@ -163,6 +163,22 @@
   position: absolute;
 }
 
+#modal-heading-confirm {
+  margin: 0;
+}
+
+#modal-heading-avatar {
+  margin-bottom: 54px;
+}
+
+#modal-profile-link {
+  margin-bottom: 0;
+}
+
+#modal-profile-submit {
+  margin-top: 48px;
+}
+
 @media screen and (max-width: 550px) {
   .modal__container {
     max-width: 282px;

@@ -1,23 +1,32 @@
 export default class Card {
-  constructor({ name, link }, handleCardClick, cardSelector) {
+  constructor(
+    { name, link, _id, isLiked },
+    handleCardClick,
+    cardSelector,
+    handleDeleteCard,
+    handleLikeCard
+  ) {
     this._name = name;
     this._link = link;
+    this.cardId = _id;
+    this.isLiked = isLiked;
     this._cardSelector = cardSelector;
-    console.log(this._cardSelector);
     this._handleCardClick = handleCardClick;
+    this._handleDeleteCard = handleDeleteCard;
+    this._handleLikeCard = handleLikeCard;
   }
 
   _setEventListeners() {
     this._cardElement
       .querySelector(".cards__like-button")
       .addEventListener("click", () => {
-        this._handLikeIcon();
+        this._handleLikeCard(this);
       });
 
     this._cardElement
       .querySelector(".cards__delete")
       .addEventListener("click", () => {
-        this._handleDeleteIcon();
+        this._handleDeleteCard(this);
       });
 
     this._cardImageElement.addEventListener("click", () =>
@@ -25,13 +34,24 @@ export default class Card {
     );
   }
 
-  _handLikeIcon() {
-    this._cardElement
-      .querySelector(".cards__like-button")
-      .classList.toggle("cards__like-button_active");
+  setLikeStatus(isLiked) {
+    this.isLiked = isLiked;
+    this._renderLikes();
   }
 
-  _handleDeleteIcon() {
+  _renderLikes() {
+    if (this.isLiked) {
+      this._likeButton.classList.add("cards__like-button_active");
+    } else {
+      this._likeButton.classList.remove("cards__like-button_active");
+    }
+  }
+
+  getId() {
+    return this._id;
+  }
+
+  removeCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }
@@ -46,11 +66,13 @@ export default class Card {
     this._cardElementTitle = this._cardElement.querySelector(
       ".cards__description-text"
     );
+    this._likeButton = this._cardElement.querySelector(".cards__like-button");
     this._cardImageElement.src = this._link;
     this._cardImageElement.alt = this._name;
     this._cardElementTitle.textContent = this._name;
 
     this._setEventListeners();
+    this._renderLikes();
     return this._cardElement;
   }
 }
