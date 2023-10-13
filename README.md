@@ -1,7 +1,5 @@
 # Project 3: Around The U.S.
 
-<img align="center" alt="Image of project" src="./src/images/Around the Us 1.png">
-
 A projected based on a user friendly social media page that allows users to edit the account credentials to their own, add photos, delete photos and even like the photots!
 
 How the Project was created:
@@ -18,3 +16,8 @@ In the future Id love for this website to be connected to an actual backend that
      <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" alt="VS Code" height="40" style="vertical-align:top; margin:4px">
     <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" alt="VS Code" height="40" style="vertical-align:top; margin:4px">
   </p>
+
+# Check out the live site:
+
+Hosted with GitHub pages, you can check out the live site here:
+https://dillona25.github.io/se_project_aroundtheus/
