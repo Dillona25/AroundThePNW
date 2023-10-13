@@ -1,9 +1,6 @@
 # Project 3: Around The U.S.
 
 <img align="center" alt="Image of project" src="./src/images/Around the Us 1.png">
-<img align="center" alt="Image of project" src="./src/images/Around The Us 2.png">
-<img align="center" alt="Image of project" src="./src/images/Around the us 3.png">
-<img align="center" alt="Image of project" src="./src/images/Around the us 4.png">
 
 A projected based on a user friendly social media page that allows users to edit the account credentials to their own, add photos, delete photos and even like the photots!
 
