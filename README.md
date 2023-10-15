@@ -5,9 +5,9 @@
 
 # Mobile Images
 
-<img align="center"  alt="Image of project" src="./src/images/Mobile 1.jpeg">
-<img align="center" alt="Image of project" src="./src/images/Mobile 2 2.jpeg">
-<img align="center" alt="Image of project" src="./src/images/Mobile 3.jpeg">
+<img align="center" height="150" alt="Image of project" src="./src/images/Mobile 1.jpeg">
+<img align="center" height="150" alt="Image of project" src="./src/images/Mobile 2 2.jpeg">
+<img align="center" height="150" alt="Image of project" src="./src/images/Mobile 3.jpeg">
 
 <br />
 <br />
@@ -22,11 +22,12 @@ In the future Id love for this website to be connected to an actual backend that
 
 # Languages and tools:
 
+<div display="flex">
   <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" alt="Javascript" height="40" style="vertical-align:top; margin:4px">
     <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" alt="VS Code" height="40" style="vertical-align:top; margin:4px">
      <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" alt="VS Code" height="40" style="vertical-align:top; margin:4px">
     <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" alt="VS Code" height="40" style="vertical-align:top; margin:4px">
-  </p>
+  </div>
 
 # Check out the live site:
 
