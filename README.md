@@ -5,7 +5,7 @@
 
 # Mobile Images
 
-<div display="flex" justify-content="space-evenly">
+<div display="flex" justify="space-evenly">
 <img align="center" height="500" alt="Image of project" src="./src/images/Mobile 1.jpeg">
 <img align="center" height="500" alt="Image of project" src="./src/images/Mobile 2 2.jpeg">
 <img align="center" height="500" alt="Image of project" src="./src/images/Mobile 3.jpeg">
