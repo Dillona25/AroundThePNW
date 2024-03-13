@@ -29,15 +29,6 @@ Around The US was created using HTML/CSS as well as JavaScript with a high focus
 In the future Id love for this website to be connected to an actual backend that allows one user to connect with others. Doing this would also call for another HTML page that displays the users feed and shows posts from the other accounts that the user decides to follow. I also want to implement a like counter on the cards connected to the API so other users can like ones card.
 <br />
 
-# Languages and tools:
-
-<div display="flex" align="center">
-  <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" alt="Javascript" height="40" style="vertical-align:top; margin:4px">
-    <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" alt="VS Code" height="40" style="vertical-align:top; margin:4px">
-     <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" alt="VS Code" height="40" style="vertical-align:top; margin:4px">
-    <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" alt="VS Code" height="40" style="vertical-align:top; margin:4px">
-  </div>
-
 # Check out the live site:
 
 Hosted with GitHub pages, you can check out the live site here:
