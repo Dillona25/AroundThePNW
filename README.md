@@ -32,7 +32,7 @@ In the future Id love for this website to be connected to an actual backend that
 # Check out the live site:
 
 Hosted with GitHub pages, you can check out the live site here:
-https://dillona25.github.io/se_project_aroundtheus/
+https://dillona25.github.io/AroundThePNW/
 
 # Figma design here:
 
